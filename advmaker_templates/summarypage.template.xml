@@ -1,0 +1,50 @@
+<h>Experience Tables</h>
+
+<p>The following table gives the experience for each encounter, by encounter difficulty. The final row
+gives the experience earned by a party if they defeated every encounter at the same difficulty
+level.</p>
+
+<p><b>Encounter Experience by Difficulty</b></p>
+<table>
+	<tr><td><b>Encounter</b></td>
+	{% for x in xpdata.difficulties %}<td><b>{{x}}</b></td>{% endfor %}</tr>
+		{% for enc in xpdata.by_encounter %}
+		<tr>
+		{% for col in enc %}
+		<td>{{col}}</td>
+		{% endfor %}
+		</tr>
+		{% endfor %}
+<tr>
+		{% for enc in xpdata.totalxpbydiff %}
+		<td>{{enc}}</td>
+		{% endfor %}		
+	</tr>
+</table>
+
+{% if not variables.nodiv %}
+<p>If the party completed every encounter at the same difficulty level, the following table gives the
+experience earned by each member of the party, based on party size.</p>
+
+<p><b>Encounter Experience by Party Size</b></p>
+<table>
+	<tr><td></td><td><b>3</b></td><td><b>4</b></td><td><b>5</b></td><td><b>6</b></td><td><b>7</b></td></tr>
+	{% for x in xpdata.party_size %}
+	<tr><td>{{"</td><td>".join(x)}}</td></tr>
+	{% endfor %}
+</table>
+{% endif %}
+
+<p>Regardless of monsters defeated, objectives accomplished, and party size the
+<b>minimum XP award is {{variables.minxp}}</b> and the <b>maximum XP award is {{variables.maxxp}}</b>.</p>
+
+{% if quests %}
+<p>If the characters accomplished any of the following, they each receive the listed addition experience points.</p>
+<table>
+<tr><td><b>Accomplishment</b></td><td><b>XP</b></td></tr>
+{% for q in quests %}
+<tr><td>{{q.0}}</td><td>{{q.1}}</td></tr>
+{% endfor %}
+<tr><td><b>Total XP</b></td><td><b>{{totalquestxp}} XP Each</b></td></tr>
+</table>
+{% endif %}

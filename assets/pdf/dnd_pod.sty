@@ -1,0 +1,248 @@
+% DND 5e LaTeX Style File
+% Assembled by Jason Denton, September 2016
+% Derived from the work of Evan Bergeron https://github.com/evanbergeron/DND-5e-LaTeX-Template
+% which includes contributions from Christopher Liu and Yannic Meyer Feb 2016
+
+% Attempts to strike a balance between mimicking official materials and both printer friendly.
+% Monster stat block are more aggressive about conserving vertical space, to get more on a page.
+
+\RequirePackage[table, fixpdftex]{xcolor}
+\RequirePackage{keycommand}
+\RequirePackage{tabularx}
+\RequirePackage[most]{tcolorbox}
+\RequirePackage{multicol}
+\RequirePackage{tikz}
+\RequirePackage{tikz-qtree}
+\RequirePackage{titlesec}
+\RequirePackage{enumitem}
+
+\definecolor{deep_purple}{cmyk}{0,0.77,0.03,0.38}
+\definecolor{shading_gray}{cmyk}{0,0,0,0.06}%{6699CC}
+\definecolor{shading_tan}{cmyk}{0,0.01,0.5,0.07}
+\definecolor{goldish}{cmyk}{0,0.14,0.92,0.05}
+\definecolor{dark_red}{cmyk}{0,0.52,0.63,0.43}
+
+\colorlet{headercolor}{dark_red}
+\colorlet{headerlinecolor}{goldish}
+\colorlet{boxtextbg}{shading_tan}
+\colorlet{boxtextbar}{dark_red}
+\colorlet{sidebarbg}{white}
+\colorlet{sidebarborder}{dark_red}
+\colorlet{rowshade}{shading_tan}
+\colorlet{background}{white}
+
+\renewcommand*\rmdefault{ppl}
+\renewcommand*\sfdefault{lmss}
+\renewcommand{\familydefault}{\rmdefault}
+\renewcommand*\itshape{\fontfamily{ppl}\fontshape{it}\selectfont}
+\renewcommand*\bfseries{\fontfamily{ppl}\fontseries{b}\selectfont}
+
+% Either hilariously, or infuriatingly, the \ifcommandkey
+% implementation is buggy. Here is a re-implementation
+% from tex.stackexchange.
+\begingroup
+  \makeatletter
+  \catcode`\/=8 %
+  \@firstofone
+    {
+      \endgroup
+      \renewcommand{\ifcommandkey}[1]{%
+        \csname @\expandafter \expandafter \expandafter
+        \expandafter \expandafter \expandafter  \expandafter
+        \kcmd@nbk \commandkey {#1}//{first}{second}//oftwo\endcsname
+      }
+   }
+
+\newkeycommand\statblock[
+armorclass=10, armortype=, hitpoints=, hitdice=, speed=, senses=, challenge=0,
+damageimmune=, damageresist=, damagevuln=, conditionimmune=, size=, pp=10,
+alignment=, type=, subtype=, languages=, skills=, saves=, xp=0, 
+str=+0,dex=+0,con=+0,int=+0,wis=+0,cha=+0]{
+\fontfamily{\sfdefault}\selectfont
+\renewcommand*\itshape{\fontfamily{\sfdefault}\fontshape{it}\selectfont}
+\renewcommand*\bfseries{\fontfamily{\sfdefault}\fontseries{b}\selectfont}
+
+\textit{\commandkey{size} \commandkey{type}\ifcommandkey{subtype}{ (\commandkey{subtype})}{}, \commandkey{alignment}} \\
+	\textbf{Armor Class} \commandkey{armorclass}
+	\ifcommandkey{armortype}{ (\commandkey{armortype})}{} 
+	\hfill \textbf{Hit Points} \commandkey{hitpoints}
+	\ifcommandkey{hitdice}{ (\commandkey{hitdice})}{} \\
+	\textbf{Speed} \commandkey{speed}  \hfill
+	\textbf{CR} \commandkey{challenge} (\commandkey{xp} XP)\\
+	\textbf{Senses} \commandkey{senses}passive perception \commandkey{pp} \vspace{3pt}
+	\setlength{\tabcolsep}{4.5pt}
+	\par\begin{tabularx}{\linewidth}{XXXXXX}
+	\hline
+		STR & DEX & CON & INT & WIS & CHA \\
+		\commandkey{str} & \commandkey{dex} &
+		\commandkey{con} & \commandkey{int} &
+		\commandkey{wis} & \commandkey{cha}\\
+		\hline
+	\end{tabularx}
+	\setlength{\tabcolsep}{6pt}
+	\par
+	\ifcommandkey{saves}{\textbf{Saving Throws} \commandkey{saves}\\}{}
+  	\ifcommandkey{skills}{\textbf{Skills} \commandkey{skills}\\}{}
+  	\ifcommandkey{damagevuln}{\textbf{Damage Vulnerabilities} \commandkey{damagevuln}\\}{}
+  	\ifcommandkey{damageresist}{\textbf{Damage Resistances} \commandkey{damageresist}\\}{}
+  	\ifcommandkey{damageimmune}{\textbf{Damage Immunities} \commandkey{damageimmune}\\}{}
+  	\ifcommandkey{conditionimmune}{\textbf{Condition Immunities} \commandkey{conditionimmune}\\}{}
+	\ifcommandkey{languages}{\textbf{Languages} \commandkey{languages}\\}{}
+	\par
+}
+
+\newenvironment{monsteraction}[1][\unskip]{\textbf{#1.}}{\vspace{3pt}}
+
+\newcommand{\monstersection}[1]{
+	{\color{headercolor}\fontfamily{\sfdefault}\selectfont\normalsize #1 \vspace{2pt}
+	\titleline{\color{headerlinecolor}\titlerule[0.4pt]}
+	\par\smallskip}
+	}
+
+\newtcolorbox{monster}[2][]{
+	enhanced,
+	frame hidden,
+	breakable,
+	%parbox=true,
+	%borderline={0.5mm}{0.5mm}{gray!50!white,dashed},
+	break at=9.5in/9.5in,
+	%before skip=7pt plus2pt,
+	toprule=2mm,
+	boxsep=0.25ex,
+	bottomtitle=-1mm,
+	left=0mm,
+	right=0mm,
+	top=2mm,
+	arc=0mm,
+	colbacktitle=white,
+	coltitle=headercolor,
+	colback=white,
+	sharp corners=all,
+	fonttitle=\fontfamily{\sfdefault}\selectfont\large\scshape,
+	fontupper=\fontfamily{\sfdefault}\selectfont\footnotesize,
+	title=#2,
+	%after={\vspace{3pt plus 1pt}},
+	#1
+}
+
+\newtcolorbox{sidebar}[1][]{
+	enhanced,	
+	parbox=false,
+	colframe=sidebarborder,
+	colback=white,
+	colbacktitle=white,
+	coltitle=black,
+	before skip=10pt plus 1pt,
+	fonttitle=\bfseries,
+	attach boxed title to top center={yshift=-0.25mm-\tcboxedtitleheight/2,yshifttext=2mm-\tcboxedtitleheight/2},
+	boxed title style={boxrule=0.5mm,
+    	frame code={ \path[tcb fill frame] ([xshift=-4mm]frame.west)
+    	-- (frame.north west) -- (frame.north east) -- ([xshift=4mm]frame.east)
+    	-- (frame.south east) -- (frame.south west) -- cycle; },
+    	interior code={ \path[tcb fill interior] ([xshift=-2mm]interior.west)
+    	-- (interior.north west) -- (interior.north east)
+    	-- ([xshift=2mm]interior.east) -- (interior.south east) -- (interior.south west)
+    	-- cycle;}  },
+    	#1
+}
+
+\newtcolorbox{boxtext}[1][]{
+	frame hidden,
+	parbox=false,
+	boxrule=0pt,
+	breakable,
+	enhanced,
+	drop shadow,
+	before skip=10pt plus 1pt,
+	boxsep=0.25ex,
+	left=6pt,
+	right=6pt,
+	top=4pt,
+	colback=boxtextbg,
+	colframe=boxtextbg,
+	arc=0mm,
+	borderline west={1mm}{0 pt}{boxtextbar},
+	after={\vspace{7.5pt plus 1pt}},
+	#1
+}
+
+\newtcolorbox{storyaward}[3][]{
+	enhanced,	
+	parbox=false,
+	colframe=sidebarborder,
+	colback=white,
+	colbacktitle=white,
+	coltitle=black,
+	before skip=10pt plus 1pt,
+	fonttitle=\bfseries\large,
+	title=\centerline{#2}\centerline{#3},
+	minipage boxed title=0.7\linewidth,
+	attach boxed title to top center={yshift=-0.25mm-\tcboxedtitleheight/2,yshifttext=2mm-\tcboxedtitleheight/2},
+	boxed title style={boxrule=0.5mm,
+    	frame code={ \path[tcb fill frame] ([xshift=-4mm]frame.west)
+    	-- (frame.north west) -- (frame.north east) -- ([xshift=4mm]frame.east)
+    	-- (frame.south east) -- (frame.south west) -- cycle; },
+    	interior code={ \path[tcb fill interior] ([xshift=-2mm]interior.west)
+    	-- (interior.north west) -- (interior.north east)
+    	-- ([xshift=2mm]interior.east) -- (interior.south east) -- (interior.south west)
+    	-- cycle;}  },
+    	#1
+}
+
+%\titlespacing{command}{left spacing}{before spacing}{after spacing}[right]
+\titlespacing*{\chapter}{0pt}{0pt}{0pt}
+\titleformat{\chapter}{\color{headercolor}\LARGE\bfseries\scshape\selectfont}{\chaptertitlename\ \thechapter: }{0em}{}
+\titlespacing*{\section}{0pt}{10pt}{-1pt}
+\titleformat{\section}{\color{headercolor}\normalfont\Large\scshape\selectfont}{}{0em}{}
+\titlespacing*{\subsection}{0pt}{10pt}{-1pt}
+\titleformat{\subsection}{\color{headercolor}\normalfont\large\scshape\selectfont}{}{0em}{}
+\titlespacing*{\subsubsection}{0pt}{10pt}{-1pt}
+\titleformat{\subsubsection}{\color{headercolor}\normalfont\large\selectfont}{}{0em}{}
+
+
+\newcommand\encounter{\@startsection{section}{1}{\z@}%
+                {-3.25ex\@plus -1ex \@minus -.2ex}%
+                {1.5ex \@plus .2ex}%
+                {\color{headercolor}\normalfont\large\scshape\selectfont}}
+
+% Table Environment
+\newenvironment{dndtable}[2]{
+\par\vspace*{8pt}
+        \noindent
+        \normalfont\scshape\centerline{#1}\\
+        \normalfont\selectfont
+        %\par\vspace*{8pt}
+        \noindent
+        \rowcolors{1}{white}{rowshade} % Alternate colors
+\tabularx{\linewidth}{#2}}
+{\endtabularx\vspace{8pt plus 1pt}}
+%{
+
+\newtcolorbox{itemcert}[2][]{
+	colback=white,
+	coltitle=goldish,
+	colframe=dark_red,
+	colbacktitle=dark_red,
+	arc is angular,
+	arc=4mm,
+	parbox=false,
+	outer arc=2mm,
+	fonttitle=\fontfamily{\rmdefault}\large\scshape\selectfont,
+	fontupper=\fontfamily{\rmdefault}\selectfont,
+	fontlower=\fontfamily{\rmdefault}\small\selectfont,
+	title=\centerline{#2},
+	width=\textwidth/2,
+	#1
+}
+        
+\newenvironment{dnditemize}{
+	\begin{itemize}[leftmargin=*]
+}{
+	\end{itemize}
+}
+
+\newenvironment{dndenumerate}{
+	\begin{enumerate}[leftmargin=0cm]
+}{
+	\end{enumerate}
+}

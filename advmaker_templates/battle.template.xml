@@ -1,0 +1,19 @@
+<id-{{'%05d' % id}}>
+	<cr type="string">{{cr}}</cr>
+	<exp type="number">{{xp}}</exp>
+	<locked type="number">1</locked>
+	<name type="string">{{name}}</name>
+	<npclist>
+		{% for n in npcs %}
+		<id-{{'%05d' % loop.index}}>
+			<count type="number">{{n.count}}</count>
+			<link type="windowreference">
+				<class>npc</class>
+				<recordname>npc.id-{{'%05d' % n.id}}</recordname>
+			</link>
+			<name type="string">{{n.name}}</name>
+			<token type="token">tokens/{{n.token}}.png@DD5E SRD Bestiary</token>
+		</id-{{'%05d' % loop.index}}>
+		{% endfor %}
+	</npclist>
+</id-{{'%05d' % id}}>

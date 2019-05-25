@@ -1,0 +1,6 @@
+\begin{tabularx}{\linewidth}{/$ for a in alignment $//$if a == 'left'$/l/$elif a == 'right'$/r/$else$/c/$endif$//$endfor$/}
+/@ " & ".join([h for h in header]) @/ \\
+/$for line in table $/
+/@ " & ".join(line) @/ \\
+/$endfor$/
+\end{tabularx}

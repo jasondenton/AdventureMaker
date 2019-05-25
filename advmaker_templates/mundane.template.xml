@@ -1,0 +1,9 @@
+<h>Mundane Items</h>
+<p>The following mundane items are present in the adventure, and may be kept or
+distributed by the party if found. They have no meaningful cash value if sold.</p>
+ 
+<ul>
+{% for it in mundane %}
+<li>{{it}}</li>
+{% endfor %}
+</ul>

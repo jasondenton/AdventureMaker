@@ -1,0 +1,11 @@
+<table>
+<tr><th>Tag</th><th>Details</th></tr>
+{{#each @this}}
+<tr><td>{{tag}}</td>
+<td><h3>{{name}}</h3>
+<p><i>{{title}}</i></br>
+{{gender}} {{race}}</p>
+<p>{{description}}</p>
+</td></tr>
+{{/each}}
+</table>

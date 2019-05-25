@@ -1,0 +1,43 @@
+\documentclass[10pt,twocolumn,twoside,openany]{book}
+\usepackage{dnd}
+\usepackage{fullpage}
+\usepackage[utf8]{inputenc}
+\usepackage[letterpaper]{geometry}
+\newgeometry{right=0.6in, top=0.75in, bottom=0.75in}
+\usepackage[english]{babel}
+\usepackage{indentfirst}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage[T1]{fontenc}
+\usepackage[pdftex]{hyperref}
+\usepackage{bookmark}
+\usepackage{makecell}
+\usepackage{graphicx}
+
+
+\hypersetup{
+	pdfcreator={pdflatex},
+    pdfsubject={Dungeons and Dragons},
+    pdfkeywords={Dungeons and Dragons, D\&D, 5e, adventure},
+    bookmarks=true,
+    linkcolor=blue,
+    urlcolor=blue,
+    citecolor=black,
+    colorlinks=true,
+}
+
+\begin{document}
+%\fontfamily{\familydefault}\selectfont
+\frenchspacing
+
+\chapter{Monster Manual}
+
+\clearpage
+
+/$ for sblock in monsters $/
+/@ sblock | usetemplate('monster') @/
+\clearpage
+/$ endfor $/
+
+
+\end{document}

@@ -1,0 +1,5 @@
+<div class="col4"> 
+{{#each @this}}
+{{this}}<br/>
+{{/each}}
+</div>

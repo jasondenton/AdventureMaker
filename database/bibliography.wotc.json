@@ -1,0 +1,566 @@
+{
+	"nosuch" : {
+		"author" : "Anonymous",
+		"title" : "Missing Citation",
+		"year" : 404,
+		"publisher" : "Imaginary Books",
+		"site" : "Waldenbooks",
+		"link" : "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+	},
+	"phb" : {
+		"author" : "Mearls, Mike and Crawford, Jermey",
+		"title" : "Player's Handbook",
+		"year" : 2014,
+		"publisher" : "Wizards of the Coast",
+		"site" : "Amazon",
+		"url" : "https://www.amazon.com/dp/0786965606"
+	},
+	"dmg" : {
+		"author" : "Mearls, Mike and Crawford, Jermey",
+		"title" : "Dungeon Master's Guide",
+		"year" : 2014,
+		"publisher" : "Wizards of the Coast",
+		"site" : "Amazon",
+		"url" : "https://www.amazon.com/dp/0786965622/"
+	},
+	"mm" : {
+		"author" : "Mearls, Mike and Crawford, Jermey",
+		"title" : "Monster Manual",
+		"year" : 2014,
+		"publisher" : "Wizards of the Coast",
+		"site" : "Amazon",
+		"url" : "https://www.amazon.com/dp/0786965614/"
+	},
+	"volo" : {
+		"author" : "Mearls, Mike and Crawford, Jermey",
+		"title" : "Volo's Guide to Monsters",
+		"year" : 2016,
+		"publisher" : "Wizards of the Coast",
+		"site" : "Amazon",
+		"url" : "https://www.amazon.com/dp/0786966017"
+	},
+	"poa" : {
+		"author" : "Baker, Richard",
+		"title" : "Princes of the Apocalypse",
+		"year" : 2015,
+		"publisher" : "Wizards of the Coast",
+		"site" : "Amazon",
+		"url" : "https://www.amazon.com/dp/0786965789"
+	},
+	"oota" : {
+		"author" : "Perkins, Christopher and Lee, Adam, and Whittevs, Richard",
+		"title" : "Out of the Abyss",
+		"year" : 2015,
+		"publisher" : "Wizards of the Coast",
+		"site" : "Amazon",
+		"url" : "https://www.amazon.com/dp/0786965819"
+	},
+	"eec" : {
+		"author" : "Baker, Richard and Schwalb, Robert J. and Schubert, Stephen",
+		"title" : "Elemental Evil Player's Companion",
+		"editor" : "Noonan, David and Janssen, Stacy",
+		"year" : 2015,
+		"publisher" : "Wizards of the Coast",
+		"site" : "DMsGuild",
+		"url" : "http://www.dmsguild.com/product/145542/Elemental-Evil-Players-Companion-5e"
+	},
+	"season2narrative" : {
+		"author" : "Woodall, Travis",
+		"title" : "Season 2 Narrative",
+		"site" : "DMsGuild",
+		"editor" : false,
+		"year" : 2016,
+		"publisher" : "Wizards of the Coast",
+		"url" : "http://www.dmsguild.com/product/171064/Season-2-Narrative-Mulmaster"
+	},
+	"stateofmulmaster" : {
+		"author" : "Marks, Greg",
+		"title" : "State of Mulmaster Article",
+		"site" : "D&D Adventurers League",
+		"editor" : "D&D Adventurers League admins, Regional and Local Coordinators",
+		"publisher" : "Wizards of the Coast",
+		"year" : 2015,
+		 "url" : "http://dndadventurersleague.org/wp-content/uploads/2015/04/State-of-Mulmaster-with-Logsheet.pdf"
+	},
+	"mulmaster2017" : {
+		"author" : "Patrick, Alan",
+		"title" : "The City of Danger: Reconstruction",
+		"site" : "DMsGuild",
+		"editor" : "Hoffman, Claire and Woodall, Travis",
+		"publisher" : "Wizards of the Coast",
+		"year" : 2017,
+		"url" : "http://www.dmsguild.com/product/202483/City-Guide-Mulmaster"
+	},
+	"ddex101" : {
+		"author" : "Merwin, Shawn",
+		"title" : "DDEX 1-01 Defiance in Phlan",
+		"site" : "DMsGuild",
+		"publisher" : "Wizards of the Coast",
+		"year" : 2014,
+		"url" : "http://www.dmsguild.com/product/170384"
+	},
+	"ddex102" : {
+		"author" : "Sleijpen, Pieter",
+		"title" : "DDEX 1-02 Secrets of Sokol Keep",
+		"site" : "DMsGuild",
+		"publisher" : "Wizards of the Coast",
+		"year" : 2014,
+		"url" : "http://www.dmsguild.com/product/170405"
+	},
+	"ddex103" : {
+		"author" : "Marks, Greg",
+		"title" : "DDEX 1-03 Shadows Over the Moonsea",
+		"site" : "DMsGuild",
+		"publisher" : "Wizards of the Coast",
+		"year" : 2014,
+		"url" : "http://www.dmsguild.com/product/170407"
+	},
+	"ddex104" : {
+		"author" : "Winter, Steve",
+		"title" : "DDEX 1-04 Dues for the Dead",
+		"site" : "DMsGuild",
+		"publisher" : "Wizards of the Coast",
+		"year" : 2014,
+		"url" : "http://www.dmsguild.com/product/170461"
+	},	
+	"ddex105" : {
+		"author" : "Bitman, Jobe",
+		"title" : "DDEX 1-05 The Courting of Fire",
+		"site" : "DMsGuild",
+		"publisher" : "Wizards of the Coast",
+		"year" : 2014,
+		"url" : "http://www.dmsguild.com/product/170462"
+	},	
+	"ddex106" : {
+		"author" : "Helmick, Daniel",
+		"title" : "DDEX 1-06 The Scroll Thief",
+		"site" : "DMsGuild",
+		"publisher" : "Wizards of the Coast",
+		"year" : 2014,
+		"url" : "http://www.dmsguild.com/product/170463"
+	},	
+	"ddex107" : {
+		"author" : "Sterling, Hersey",
+		"title" : "DDEX 1-07 Drums in the Marsh",
+		"site" : "DMsGuild",
+		"publisher" : "Wizards of the Coast",
+		"year" : 2014,
+		"url" : "http://www.dmsguild.com/product/170465"
+	},
+	"ddex108" : {
+		"author" : "Reid, Thomas",
+		"title" : "DDEX 1-08 Tales Trees Tell",
+		"site" : "DMsGuild",
+		"publisher" : "Wizards of the Coast",
+		"year" : 2014,
+		"url" : "http://www.dmsguild.com/product/170466"
+	},
+	"ddex109" : {
+		"author" : "Doyle, Will",
+		"title" : "DDEX 1-09 Outlaws of the Iron Route",
+		"site" : "DMsGuild",
+		"publisher" : "Wizards of the Coast",
+		"year" : 2014,
+		"url" : "http://www.dmsguild.com/product/170467"
+	},
+	"ddex110" : {
+		"author" : "Marks, Greg",
+		"title" : "DDEX 1-10 Tyranny in Phlan",
+		"site" : "DMsGuild",
+		"publisher" : "Wizards of the Coast",
+		"year" : 2014,
+		"url" : "http://www.dmsguild.com/product/170469"
+	},
+	"ddex111" : {
+		"author" : "Hoffman, Claire",
+		"title" : "DDEX 1-11 Dark Pyramid of Sorcerers Isle",
+		"site" : "DMsGuild",
+		"publisher" : "Wizards of the Coast",
+		"year" : 2014,
+		"url" : "http://www.dmsguild.com/product/170470"
+	},
+	"ddex112" : {
+		"author" : "Adducci, Robert",
+		"title" : "DDEX 1-12 Raiders of the Twilight Marsh",
+		"site" : "DMsGuild",
+		"publisher" : "Wizards of the Coast",
+		"year" : 2014,
+		"url" : "http://www.dmsguild.com/product/170471"
+	},
+	"ddex113" : {
+		"author" : "Tulach, Chris",
+		"title" : "DDEX 1-13 Pool of Radiance Resurgent",
+		"site" : "DMsGuild",
+		"publisher" : "Wizards of the Coast",
+		"year" : 2014,
+		"url" : "http://www.dmsguild.com/product/170472"
+	},
+	"ddex114" : {
+		"author" : "Lindsay, Chris",
+		"title" : "DDEX 1-14 Escape from Phlan",
+		"site" : "DMsGuild",
+		"publisher" : "Wizards of the Coast",
+		"year" : 2014,
+		"url" : "http://www.dmsguild.com/product/170474"
+	},
+	"ddex201" : {
+		"author" : "Merwin, Shawn",
+		"title" : "DDEX 2-01 City of Danger",
+		"site" : "DMsGuild",
+		"publisher" : "Wizards of the Coast",
+		"year" : 2015,
+		"url" : "http://www.dmsguild.com/product/170386"
+	},
+	"ddex202" : {
+		"author" : "Helmick, Daniel",
+		"title" : "DDEX 2-02 Embers of Elmwood",
+		"site" : "DMsGuild",
+		"publisher" : "Wizards of the Coast",
+		"year" : 2015,
+		"url" : "http://www.dmsguild.com/product/170476"
+	},
+	"ddex203" : {
+		"author" : "Shea, Mike",
+		"title" : "DDEX 2-03 The Drowned Tower",
+		"site" : "DMsGuild",
+		"publisher" : "Wizards of the Coast",
+		"year" : 2015,
+		"url" : "http://www.dmsguild.com/product/170477"
+	},
+	"ddex204" : {
+		"author" : "Doyle, Will",
+		"title" : "DDEX 2-04 Mayhem in the Earthspur Mines",
+		"site" : "DMsGuild",
+		"publisher" : "Wizards of the Coast",
+		"year" : 2015,
+		"url" : "http://www.dmsguild.com/product/170478"
+	},	
+	"ddex205" : {
+		"author" : "Rossomangno, John",
+		"title" : "DDEX 2-05 Flames of Kythorn",
+		"site" : "DMsGuild",
+		"publisher" : "Wizards of the Coast",
+		"year" : 2015,
+		"url" : "http://www.dmsguild.com/product/170479"
+	},	
+	"ddex206" : {
+		"author" : "Marks, Greg",
+		"title" : "DDEX 2-06 Breath of the Yellow Rose",
+		"site" : "DMsGuild",
+		"publisher" : "Wizards of the Coast",
+		"year" : 2015,
+		"url" : "http://www.dmsguild.com/product/170480"
+	},	
+	"ddex207" : {
+		"author" : "Hart, Ken",
+		"title" : "DDEX 2-07 Bounty in the Bog",
+		"site" : "DMsGuild",
+		"publisher" : "Wizards of the Coast",
+		"year" : 2015,
+		"url" : "http://www.dmsguild.com/product/170481"
+	},
+	"ddex208" : {
+		"author" : "Eagon, Tim",
+		"title" : "DDEX 2-08 Foulness Beneath Mulmaster",
+		"site" : "DMsGuild",
+		"publisher" : "Wizards of the Coast",
+		"year" : 2015,
+		"url" : "http://www.dmsguild.com/product/170482"
+	},
+	"ddex209" : {
+		"author" : "Sleijpen, Pieter",
+		"title" : "DDEX 2-09 Eye of the Tempest",
+		"site" : "DMsGuild",
+		"publisher" : "Wizards of the Coast",
+		"year" : 2015,
+		"url" : "http://www.dmsguild.com/product/170484"
+	},
+	"ddex210" : {
+		"author" : "Doyle, Will",
+		"title" : "DDEX 2-10 Cloaks and Shadows",
+		"site" : "DMsGuild",
+		"publisher" : "Wizards of the Coast",
+		"year" : 2015,
+		"url" : "http://www.dmsguild.com/product/170485"
+	},
+	"ddex211" : {
+		"author" : "Marks, Greg",
+		"title" : "DDEX 2-11 Oubliette of Fort Iron",
+		"site" : "DMsGuild",
+		"publisher" : "Wizards of the Coast",
+		"year" : 2015,
+		"url" : "http://www.dmsguild.com/product/170486"
+	},
+	"ddex212" : {
+		"author" : "Adducci, Robert",
+		"title" : "DDEX 2-12 Dark Rites at Fort Dalton",
+		"site" : "DMsGuild",
+		"publisher" : "Wizards of the Coast",
+		"year" : 2015,
+		"url" : "http://www.dmsguild.com/product/170487"
+	},
+	"ddex213" : {
+		"author" : "Abadia, Teos",
+		"title" : "DDEX 2-13 The Howling Void",
+		"site" : "DMsGuild",
+		"publisher" : "Wizards of the Coast",
+		"year" : 2015,
+		"url" : "http://www.dmsguild.com/product/170488"
+	},
+	"ddex214" : {
+		"author" : "Helmick, Daniel",
+		"title" : "DDEX 2-14 The Sword of Selfaril",
+		"site" : "DMsGuild",
+		"publisher" : "Wizards of the Coast",
+		"year" : 2015,
+		"url" : "http://www.dmsguild.com/product/170489"
+	},
+	"ddex215" : {
+		"author" : "Rossomangno, John",
+		"title" : "DDEX 2-15 Black Heart of Vengeance",
+		"site" : "DMsGuild",
+		"publisher" : "Wizards of the Coast",
+		"year" : 2015,
+		"url" : "http://www.dmsguild.com/product/170490"
+	},
+	"ddex216" : {
+		"author" : "Rossomangno, John",
+		"title" : "DDEX 2-16 Boltmelter's Book",
+		"site" : "DMsGuild",
+		"publisher" : "Wizards of the Coast",
+		"year" : 2015,
+		"url" : "http://www.dmsguild.com/product/170491"
+	},
+	"ddex301" : {
+		"author" : "Merwin, Shawn",
+		"title" : "DDEX 3-01 Harried in Hillsfar",
+		"site" : "DMsGuild",
+		"publisher" : "Wizards of the Coast",
+		"year" : 2015,
+		"url" : "http://www.dmsguild.com/product/170493"
+	},
+	"ddex302" : {
+		"author" : "Kelly, Joshua",
+		"title" : "DDEX 3-02 Shackles of Blood",
+		"site" : "DMsGuild",
+		"publisher" : "Wizards of the Coast",
+		"year" : 2015,
+		"url" : "http://www.dmsguild.com/product/170494"
+	},
+	"ddex303" : {
+		"author" : "Moore, Cindy",
+		"title" : "DDEX 3-03 Occuptation of Szith Morcane",
+		"site" : "DMsGuild",
+		"publisher" : "Wizards of the Coast",
+		"year" : 2015,
+		"url" : "http://www.dmsguild.com/product/170495"
+	},
+	"ddex304" : {
+		"author" : "Olson, Dave",
+		"title" : "DDEX 3-04 It's All in the Blood",
+		"site" : "DMsGuild",
+		"publisher" : "Wizards of the Coast",
+		"year" : 2015,
+		"url" : "http://www.dmsguild.com/product/170497"
+	},	
+	"ddex305" : {
+		"author" : "Alaniz, Robert",
+		"title" : "DDEX 3-05 Bane of the Tradeways",
+		"site" : "DMsGuild",
+		"publisher" : "Wizards of the Coast",
+		"year" : 2015,
+		"url" : "http://www.dmsguild.com/product/170498"
+	},	
+	"ddex306" : {
+		"author" : "Law, Ash",
+		"title" : "DDEX 3-06 No Foolish Matter",
+		"site" : "DMsGuild",
+		"publisher" : "Wizards of the Coast",
+		"year" : 2015,
+		"url" : "http://www.dmsguild.com/product/170499"
+	},	
+	"ddex307" : {
+		"author" : "Hudson, Matt",
+		"title" : "DDEX 3-07 Hearld of the Moon",
+		"site" : "DMsGuild",
+		"publisher" : "Wizards of the Coast",
+		"year" : 2015,
+		"url" : "http://www.dmsguild.com/product/170501"
+	},
+	"ddex308" : {
+		"author" : "Reinke Lisa",
+		"title" : "DDEX 3-08 The Malady of Elventree",
+		"site" : "DMsGuild",
+		"publisher" : "Wizards of the Coast",
+		"year" : 2015,
+		"url" : "http://www.dmsguild.com/product/170502"
+	},
+	"ddex309" : {
+		"author" : "Kronewitter, Cole",
+		"title" : "DDEX 3-09 The Waydown",
+		"site" : "DMsGuild",
+		"publisher" : "Wizards of the Coast",
+		"year" : 2015,
+		"url" : "http://www.dmsguild.com/product/170504"
+	},
+	"ddex310" : {
+		"author" : "Lundeen, Ron",
+		"title" : "DDEX 3-10 Quelling the Horde",
+		"site" : "DMsGuild",
+		"publisher" : "Wizards of the Coast",
+		"year" : 2015,
+		"url" : "http://www.dmsguild.com/product/170392"
+	},
+	"ddex311" : {
+		"author" : "Adducci, Robert",
+		"title" : "DDEX 3-11 The Quest for Sporedome",
+		"site" : "DMsGuild",
+		"publisher" : "Wizards of the Coast",
+		"year" : 2015,
+		"url" : "http://www.dmsguild.com/product/170505"
+	},
+	"ddex312" : {
+		"author" : "Moore, Cindy",
+		"title" : "DDEX 3-12 Hillsfar Reclaimed",
+		"site" : "DMsGuild",
+		"publisher" : "Wizards of the Coast",
+		"year" : 2016,
+		"url" : "http://www.dmsguild.com/product/177567"
+	},
+	"ddex313" : {
+		"author" : "Patrick, Alan",
+		"title" : "DDEX 3-13 Writhing in the Dark",
+		"site" : "DMsGuild",
+		"publisher" : "Wizards of the Coast",
+		"year" : 2016,
+		"url" : "http://www.dmsguild.com/product/177568"
+	},
+	"ddex314" : {
+		"author" : "Marks, Greg",
+		"title" : "DDEX 3-14 Death on the Wall",
+		"site" : "DMsGuild",
+		"publisher" : "Wizards of the Coast",
+		"year" : 2016,
+		"url" : "http://www.dmsguild.com/product/177569"
+	},
+	"ddex315" : {
+		"author" : "Adducci, Robert",
+		"title" : "DDEX 3-15 Szith Morcane Unbound",
+		"site" : "DMsGuild",
+		"publisher" : "Wizards of the Coast",
+		"year" : 2016,
+		"url" : "http://www.dmsguild.com/product/177570"
+	},
+	"ddex316" : {
+		"author" : "Marks, Greg",
+		"title" : "DDEX 3-16 Assault on Maerimydra",
+		"site" : "DMsGuild",
+		"publisher" : "Wizards of the Coast",
+		"year" : 2016,
+		"url" : "http://www.dmsguild.com/product/177572"
+	},
+	"sfbay0101" : {
+		"author" : "Denton, Jason",
+		"title" : "CCC-SFBAY 01-01 Plots in Motion",
+		"editor" : "Spieldenner, Rob and Printz, Wrich and Asada, Gladney",
+		"site" : "DMsGuild",
+		"year" : 2017,
+		"url" : "http://www.dmsguild.com/product/206459/CCCSFBAY11-Plots-in-Motion"
+	},
+	"tftyp" : {
+		"author" : "Mohan, Kim and Mearls, Mike",
+		"title" : "Tales from the Yawning Portal",
+		"editor" : "Crawford, Jeremy",
+		"year" : 2017,
+		"site" : "Amazon",
+		"url" : "https://www.amazon.com/dp/0786966092"
+	},
+	"oota" : {
+		"author" : "Perkins, Christopher and Lee, Adam and Whitters, Richard",
+		"title" : "Out of the Abyss",
+		"editor" : "Crawford, Jeremy",
+		"year" : 2015,
+		"site" : "Amazon",
+		"url" : "https://www.amazon.com/dp/0786965819/"
+	},
+	"realms_pg" : {
+		"author" : "Greenwood, Ed and Grub, Jeff and Martin, Karen S",
+		"title" : "Cyclopedia of the Realms",
+		"year" : 1987,
+		"site" : "DMsGuild",
+		"publisher" : "Wizards of the Coast",
+		"url" : "http://www.dmsguild.com/product/16782/Forgotten-Realms-Campaign-Set-1e"
+	},
+	"realms_dm" : {
+		"author" : "Greenwood, Ed and Grub, Jeff and Martin, Karen S",
+		"title" : "Dm's Sourcebook of the Realms",
+		"year" : 1987,
+		"site" : "DMsGuild",
+		"publisher" : "Wizards of the Coast",
+		"url" : "http://www.dmsguild.com/product/16782/Forgotten-Realms-Campaign-Set-1e"
+	},
+	"pages_mages" : {
+		"author" : "Greenwood, Ed and Beach, Tim",
+		"title" : "FOR8 Pages from the Mages",
+		"year" : 1995,
+		"publisher" : "Wizards of the Coast",
+		"site" : "DMsGuild",
+		"url" : "http://www.dmsguild.com/product/16853/FOR8-Pages-from-the-Mages-2e"
+	},
+	"mc_annual_3" : {
+		"author" : "Winter, Steve",
+		"editor" : "Perkins, Jon",
+		"year" : 1995,
+		"publisher" : "TSR",
+		"title" : "Monstrous Compendium Annual Volume Three"
+	},
+	"elm0103" : {
+		"title" : "CCC-BMG18 ELM1-3 The Battle of Elmwood",
+		"author" : "Brainard, Dave and Heisler, Ben and Leitman, Paige",
+		"year" : 2016,
+		"publisher" : "Baldman Games",
+		"site" : "DMsGuild",
+		"url" : "http://www.dmsguild.com/product/204922/CCCBMG18-ELM-13-The-Battle-of-Elmwood"
+	},
+	"moonsea2" : {
+		"title" : "The Moonsea",
+		"author" : "Terra, John",
+		"year" : 1995,
+		"publisher" : "Wizards of the Coast",
+		"site" : "DMsGuild",
+		"url" : "http://www.dmsguild.com/product/16847/The-Moonsea-2e"
+	},
+	"moonsea3" : {
+		"title" : "Mysteries of the Moonsea",
+		"author" : "Upchurch, Wil and Reynolds, Sean K and Drader, Darrin and Reidm Thomas M.",
+		"year" : 2006,
+		"publisher" : "Wizards of the Coast",
+		"site" : "DMsGuild",
+		"url" : "http://www.dmsguild.com/product/28745/Mysteries-of-the-Moonsea-35"
+	},
+	"plaguespells" : {
+		"title" : "Plague of Spells",
+		"author" : "Bruce R. Cordell",
+		"year" : 2008,
+		"publisher" : "Wizards of the Coast",
+		"site" : "Amazon",
+		"url" : "https://www.amazon.com/dp/B005UFHDLE"
+	},
+	"citytorment" : {
+		"title" : "City of Torment",
+		"author" : "Bruce R. Cordell",
+		"year" : 2009,
+		"publisher" : "Wizards of the Coast",
+		"site" : "Amazon",
+		"url" : "https://www.amazon.com/dp/B0034DGPLI8"
+	},	
+	"keystars" : {
+		"title" : "Key of Stars",
+		"author" : "Bruce R. Cordell",
+		"year" : 2010,
+		"publisher" : "Wizards of the Coast",
+		"site" : "Amazon",
+		"url" : "https://www.amazon.com/dp/B0045EOIW8"
+	}
+}
+

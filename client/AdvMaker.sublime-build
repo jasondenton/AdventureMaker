@@ -1,0 +1,8 @@
+{
+    "cmd": ["advmaker.sh"],
+    "path": "/bin:/usr/bin:/usr/local/bin:$HOME/Library/Application Support/Sublime Text 3/Packages/AdventureMaker",   
+    "windows" : {
+    	"cmd" : ["advmaker.bat"],
+    	"path" : "C:%HOMEPATH%\\AppData\\Roaming\\Sublime Text 3\\Packages\\AdventureMaker"
+    }
+}

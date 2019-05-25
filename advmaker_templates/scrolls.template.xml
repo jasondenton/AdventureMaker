@@ -1,0 +1,14 @@
+
+<h>Spell Scrolls</h>
+<p>A spell scroll contains the spell. If that spell is on your spell list, you can use an action to read
+the scroll and cast the spell without having to provide any of the spell's components. Otherwise, the scroll is
+unintelligible. If the spell is of a higher level than you can normally cast, make an ability check using your
+spellcasting ability against a DC of 10 + the spell's level. On a failed check there is no effect.
+Regardless of success or failure, once used the scroll crumbles to dust.</p>
+
+<table>
+<tr><td><b>Spell</b></td><td><b>Rarity</b></td></tr>
+{% for sc in scrolls %}
+<tr><td>{{sc.scrolltag}}</td><td>{{sc.rarity}}</td></tr>
+{% endfor %}
+</table>

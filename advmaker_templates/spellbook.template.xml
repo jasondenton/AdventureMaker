@@ -1,0 +1,27 @@
+{%if spells[0]%}
+<p><b>1st level</b> : <i>{{", ".join(spells[0])}}</i></p>
+{%endif%}
+{%if spells[1]%}
+<p><b>2nd level</b> : <i>{{", ".join(spells[1])}}</i></p>
+{%endif%}
+{%if spells[2]%}
+<p><b>3rd level</b> : <i>{{", ".join(spells[2])}}</i></p>
+{%endif%}
+{%if spells[3]%}
+<p><b>4th level</b> : <i>{{", ".join(spells[3])}}</i></p>
+{%endif%}
+{%if spells[4]%}
+<p><b>5th level</b> : <i>{{", ".join(spells[4])}}</i></p>
+{%endif%}
+{%if spells[5]%}
+<p><b>6th level</b> : <i>{{", ".join(spells[5])}}</i></p>
+{%endif%}
+{%if spells[6]%}
+<p><b>7th level</b> : <i>{{", ".join(spells[6])}}</i></p>
+{%endif%}
+{%if spells[7]%}
+<p><b>8th level</b> : <i>{{", ".join(spells[7])}}</i></p>
+{%endif%}
+{%if spells[8]%}
+<p><b>9th level</b> : <i>{{", ".join(spells[8])}}</i></p>
+{%endif%}

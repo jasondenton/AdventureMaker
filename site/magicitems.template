@@ -1,0 +1,9 @@
+<table>
+<tr><th>Tag</th><th>Name</th><th>Needs</th></tr>
+{{#each @this}}
+<tr><td>{{tag}}</td>
+<td>{{name}}</td>
+<td>{{#if needs}}{{#each needs}}{{#if @index}}, {{/if}}{{this}}{{/each}}{{/if}}</td>
+</tr>
+{{/each}}
+</table>

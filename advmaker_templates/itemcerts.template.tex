@@ -1,0 +1,50 @@
+\documentclass[10pt, landscape, twocolumn]{article}
+\usepackage[letterpaper]{geometry}
+\newgeometry{right=0.4in, left=0.4in,top=0.5in, bottom=0.5in}
+\usepackage{indentfirst}
+\usepackage{titlesec}
+\usepackage[english]{babel}
+\usepackage{fancyhdr}
+\usepackage[T1]{fontenc}
+\usepackage[pdftex]{hyperref}
+\hypersetup{
+    pdfcreator={pdflatex},
+    pdfauthor={/@ variables.author @/},
+    pdftitle={/@ variables.title @/},
+    pdfsubject={Dungeons and Dragons},
+    pdfkeywords={Dungeons and Dragons, D\&D, 5e, adventure},
+    bookmarks=true,
+    linkcolor=blue,
+    urlcolor=blue,
+    citecolor=black,
+    colorlinks=true,
+}
+\usepackage{dnd}
+\begin{document}
+\pagestyle{empty}
+
+
+/$ for mi in magicitems $/
+/$if not mi.variables.nocert$/
+/$ for j in range(0,mi.available) $/
+/@ mi | usetemplate('itemcert') @/
+/$endfor$/
+/$endif$/
+/$endfor$/
+
+/$ for mi in consumables $/
+/$if not mi.variables.nocert$/
+/$ for j in range(0,mi.available) $/
+/@ mi | usetemplate('itemcert') @/
+/$ endfor $/
+/$endif$/
+/$endfor$/
+
+/$ for mi in scrolls $/
+/$if not mi.variables.nocert$/
+/$ for j in range(0,mi.available) $/
+/@ mi | usetemplate('itemcert') @/
+/$ endfor $/
+/$endif$/
+/$endfor$/
+\end{document}

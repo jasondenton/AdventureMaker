@@ -1,0 +1,451 @@
+\documentclass[10pt,twocolumn,twoside,openany]{book}
+\usepackage{dnd}
+\usepackage{fullpage}
+\usepackage[utf8]{inputenc}
+\usepackage[letterpaper]{geometry}
+\newgeometry{right=0.6in, top=0.75in, bottom=0.75in}
+\usepackage[english]{babel}
+\usepackage{indentfirst}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage[T1]{fontenc}
+\usepackage[pdftex]{hyperref}
+\usepackage{bookmark}
+\usepackage{makecell}
+\usepackage{graphicx}
+\usepackage{easyfig}
+/$ if variables.coverimage $/
+\usepackage[pages=some]{background}
+\backgroundsetup{
+scale=1,
+color=black,
+opacity=1,
+angle=0,
+contents={%
+  \includegraphics[width=\paperwidth,height=\paperheight]{/@variables.coverimage@/}
+  }%
+}
+/$ endif $/
+\usepackage[absolute,overlay]{textpos}
+\pdfadjustspacing=1
+\pdfcompresslevel=9
+\DeclareGraphicsExtensions{.pdf,.png,.jpg,.jpeg}
+
+\usepackage[strict]{changepage}
+
+\hypersetup{
+	pdfcreator={pdflatex},
+	pdfauthor={/@ variables.author @/},
+    pdftitle={/@ variables.title @/},
+    pdfsubject={Dungeons and Dragons},
+    pdfkeywords={Dungeons and Dragons, D\&D, 5e, adventure},
+    bookmarks=true,
+    linkcolor=blue,
+    urlcolor=blue,
+    citecolor=black,
+    colorlinks=true,
+}
+
+\fancypagestyle{dndstyle}{
+	\fancyhf{}
+	\fancyfoot[CE,CO]{\fontfamily{\rmdefault}\selectfont /@ variables.title @/}
+	\renewcommand{\headrulewidth}{0pt}
+	\fancyfoot[LE,RO]{\thepage}	
+}
+\fancypagestyle{plain}{
+	\fancyhf{}
+	\fancyfoot[CE,CO]{\fontfamily{\rmdefault}\selectfont /@ variables.title @/}
+	\renewcommand{\headrulewidth}{0pt}
+	\fancyfoot[LE,RO]{\thepage}	
+}
+\pagestyle{dndstyle}
+
+\newcommand{\inches}{\thinspace\ensuremath{{}^{\prime\prime}}}
+
+\begin{document}
+%\fontfamily{\familydefault}\selectfont
+\frenchspacing
+
+\begin{titlepage}
+\hspace*{6.5in}.
+\thispagestyle{empty}
+/$ if variables.coverimage $/
+\BgThispage
+/$ endif $/
+
+\begin{textblock*}{\paperwidth}(0in,10in)
+\definecolor{antique_white}{HTML}{FAEBD7}
+\begin{tcolorbox}[enhanced,
+  arc=0mm,
+  opacityback=0.5,
+  opacityframe=0.5, 
+  colback=antique_white,
+  colframe=antique_white
+]
+\centerline{/@variables.code@/}\vspace*{6pt}
+\centerline{\scshape\Huge /@variables.title@/}\vspace*{6pt}
+\centerline{\textit{A/$if variables.playtime == '8'$/n/$endif$/ /@variables.playtime@/ hour adventure for characters levels /@intvars.tierlevels@/}}
+
+\end{tcolorbox}
+\end{textblock*}
+
+\clearpage
+\vfill
+\end{titlepage}
+
+\setcounter{tocdepth}{1}
+\setcounter{secnumdepth}{0}
+
+\begingroup
+\let\onecolumn\twocolumn
+\let\cleardoublepage\relax
+\let\clearpage\relax
+/$ if intvars.longtoc $/
+\small
+/$ endif $/
+\tableofcontents
+\endgroup
+\newpage
+/@ body @/
+\vspace*{0.5in}
+\noindent {\scshape\Large Credits}
+
+/$ if variables.author $/ \noindent \textbf{Author}: /@variables.author@/ \par /$endif$/
+/$ if variables.artists $/ \noindent \textbf{Art Work}: /@variables.artists@/ \par /$endif$/
+/$ if variables.editors $/ \noindent \textbf{Editing Assistance}: /@variables.editors @/ \par /$endif$/
+/$ if variables.playtesters $/\noindent \textbf{Playtesters}: /@ variables.playtesters @/ \par /$ endif $/
+\noindent \textbf{Last Revised:} \today
+\vspace*{0.25in}
+
+/$ if splices.credits $/
+\par /@splices.credits.body@/
+\vspace*{0.25in}
+/$ endif $/
+\vfill
+\noindent {\small DUNGEONS \& DRAGONS, D\&D, Wizards of the Coast, Forgotten Realms, the dragon ampersand,
+and all other Wizards of the Coast product names, and their respective logos are trademarks of 
+Wizards of the Coast in the USA and other countries. This work contains material that is copyright 
+Wizards of the Coast and/or other authors. Such material is used with permission under the 
+Community Content Agreement for Dungeon Masters Guild. All other original material in this 
+work is copyright /@ variables.year @/ by /@ variables.author @/ and published under the 
+Community Content Agreement for Dungeon Masters Guild.}
+
+\chapter*{Preliminaries}
+
+/$ if splices.prelimintro $/
+/@splices.prelimintro.body@/
+/$ else $/
+
+/@variables.title@/ is an adventure for Dungeons and Dragons 5th edition, originally created for
+/@variables.convention@/ /@variables.year@/. It is set in Wizards of the Coast's Forgotten Realms
+and is intended and legal for play in the D\&D Adventurers League. For more information please 
+visit the D\&D Adventurers League home at:\\ \url{http://www.dndadventurersleague.org}
+
+/$ endif $/
+
+\section*{Running the Adventure}
+
+%There should not be fore play at the table. Adventurers League is a family friendly organization.
+
+Before running this adventure, the Dungeon Master should read the entire adventure, 
+including all the box text. Box text is often used to either provide important details
+about the environment or advance the plot, and the information it contains is often not
+repeated elsewhere in the text.
+
+Combat encounters appear at the end of the chapter in which they take place. This allows them to be
+laid out in a way that minimizes the amount of page flipping required to find stat blocks while running
+the encounter. Because encounters may contain player box text and plot advancement, it may be useful to
+flip ahead and read the encounters as they are referenced in the text. If you plan on using miniatures to
+run the adventure, a list of the miniatures required is in appendix
+A: \hyperref[appendix_adventure_summary]{Adventure Summary}.
+
+\section*{Adventure Length}
+This adventure is expected to take /@variables.hours@/ hours to run as written. This assumes
+the group stays on topic, that the party is consistently moving forward at a reasonable pace, 
+and that each turn of combat is resolved quickly. If the group has trouble staying on topic,
+use your position as Dungeon Master to remind the group about the adventure at hand and keep
+the story moving. When the game maintains forward momentum and moves forward quickly the group
+will find it easier to focus.
+
+A party that is not making consistent progress and is out of options will quickly become frustrated.
+If the players get lost or off track, feel free to provide hints or clues to get them back
+on track. If the characters are unable to overcome a particular obstacle or challenge they may
+need to be presented with additional options for moving forward.
+
+Combat should be tense and exciting. Once a particular battle has reached the point where the
+outcome is no longer in doubt, consider calling the fight. Once the parties opponents have lost the
+ability to meaningfully harm the party further action does not serve to advance the plot. Narrate the
+ending and keep the adventure moving forward.
+\vfill
+\pagebreak
+\section*{Adjusting the Adventure}
+
+\textbf{This adventure is meant for a group of five to six characters, of levels /@intvars.tierlevels@/. It is 
+balanced for a party of /@intvars.optlevels@/ level.} Parties of that level will find this 
+adventure suitably challenging if they face the Normal version of the encounters. Larger parties,
+parties with higher level characters, or
+those that work especially well together may find the Strong Party option of the encounters more rewarding.
+If the party is smaller, has a lower average level, or does not have a good mix of party roles the
+Dungeon Master may need to use the Weak Party option to avoid overwhelming the characters.
+
+Player skill (not character level) can make a big difference in how a party copes with challenges. Players
+new to the game will find easier encounters less frustrating. Experienced players will be able to tackle
+more difficult fights than their character level may indicate and will often enjoy the challenge.
+
+/$ if splices.preliminaries $/
+/@splices.preliminaries.body@/
+/$ endif $/
+
+/$ for chp in chapters $/
+/@ chp| usetemplate('chapter') @/
+/$ endfor $/
+
+\appendix
+\chapter{Adventure Summary}
+\label{appendix_adventure_summary}
+
+\section*{Figures Needed}
+
+If you plan on using miniatures to run the combat encounters in this adventure, you will find it useful 
+to have the following figures on hand. It may be possible to run the adventure with fewer figures of
+some type, but you will not need more than is shown in the table so long as the party does not
+attempt to take on two encounters at once.
+
+\begin{center}
+\begin{dndtable}{Figures Needed}{Xr}
+\textbf{Figure} & \textbf{\# Required}\\
+/$ for fig in figures $/
+/@ fig.0 @/ & /@ fig.1 @/\\
+/$ endfor $/
+\end{dndtable}
+\end{center}
+
+\section*{Experience Tables}
+
+The following table gives the experience for each encounter, by encounter difficulty. The final row
+gives the experience earned by a party if they defeated every encounter at the same difficulty
+level.
+
+\begin{center}
+\begin{dndtable}{Encounter Experience by Difficulty}{X/$ for x in xpdata.difficulties $/r/$ endfor $/}
+\textbf{Encounter} /$ for x in xpdata.difficulties $/ & \textbf{/@x@/}/$ endfor $/ \\
+/$ for enc in xpdata.by_encounter $/
+/@ " & ".join(enc) @/ \\ 
+/$ endfor $/
+\textbf{/@ "} & \\textbf{".join(xpdata.totalxpbydiff)@/}
+\end{dndtable}
+\end{center}
+
+/$ if not variables.nodivxp $/
+If the party completed every encounter at the same difficulty level, the following table gives the
+experience earned by each member of the party, based on party size.
+
+\begin{center}
+\begin{dndtable}{Experience by Party Size}{Xrrrrr}
+ & \textbf{3} & \textbf{4} & \textbf{5} & \textbf{6} & \textbf{7}\\
+/$ for x in xpdata.party_size $/
+/@ " & ".join(x) @/ \\ 
+/$ endfor $/
+\end{dndtable}
+\end{center}
+/$endif$/
+
+/$ if quests $/
+If the characters accomplished any of the following, they each receive the listed addition experience points.
+
+\begin{center}
+\begin{dndtable}{XP For Accomplishments}{Xr}
+\textbf{Accomplishment} & \textbf{XP}\\
+/$ for q in quests $/
+/@ q.0 @/ & /@ q.1 @/\\
+/$ endfor $/
+\textbf{Total XP} & \textbf{/@totalquestxp@/ XP Each}\\
+\end{dndtable}
+\end{center}
+/$endif$/
+
+Regardless of monsters defeated, objectives accomplished, and party size the
+\textbf{minimum XP award is  /@variables.minxp@/} and the \textbf{maximum XP award is /@variables.maxxp@/}.
+
+\section*{Treasure}
+
+/$ if cash $/
+\begin{center}
+\begin{dndtable}{Treasure By Value}{Xr}
+/$ for loot in cash $/
+/@ loot.0 @/ & /@ loot.1 @/\\
+/$ endfor $/
+\textbf{Total Value} & \textbf{/@ totalcash @/}
+\end{dndtable}
+\end{center}
+
+/$ if not variables.nodivgp $/
+If the party earned, found, looted, or otherwise acquired all cash rewards in the adventure,
+the table below gives the split of the treasure based on party size.
+
+\begin{center}
+\small
+\begin{dndtable}{Treasure By Party Size}{Xrrrrr}
+\textbf{Party Size} & 3 & 4 & 5 & 6 & 7\\
+\textbf{Total GP} /$ for x in cashsplit $/ & /@x@/ /$ endfor $/\\
+\end{dndtable}
+\end{center}
+/$ endif $/
+/$ endif $/
+
+/$ if magicitems $/
+\section*{Magic Items}
+/$ for mi in magicitems $/
+\label{magicitem_/@mi.name@/}
+\centerline{\textbf{/@mi.name@/} /$ if mi.available > 1$/ (/@mi.available@/ available) /$endif$/}
+\centerline{\textit{/@mi.category@/ (/@mi.rarity@/)}} 
+/@mi.body@/
+
+/$if mi.attuneby $/ \textit{This item requires attunement by /@mi.attuneby@/.} 
+/$elif mi.attunement $/ \textit{This item requires attunement.} /$endif$/
+\vspace*{.1in}
+/$ endfor $/
+/$ endif $/
+
+/$ if consumables or scrolls $/
+\section*{Consumables}
+/$ if scrolls $/
+\label{magicitem_scrolls}
+\centerline{\textbf{Spell Scrolls}}
+A spell scroll contains the spell. If that spell is on your spell list, you can use an action to read
+the scroll and cast the spell without having to provide any of the spell's components. Otherwise, the scroll is
+unintelligible. If the spell is of a higher level than you can normally cast, make an ability check using your
+spellcasting ability against a DC of 10 + the spell's level. On a failed check there is no effect.
+Regardless of success or failure, once used the scroll crumbles to dust.
+
+\begin{dndtable}{Scrolls Available}{>{\raggedright\arraybackslash}Xr}
+\textbf{Spell} & \textbf{\# Available}\\
+/$ for sc in scrolls $/
+/@sc.scrolltag@/ & /@sc.variables.available@/\\
+/$ endfor $/
+\end{dndtable}
+\vspace*{.1in}
+/$endif $/
+
+/$ for mi in consumables $/
+\label{magicitem_/@mi.name@/}
+\centerline{\textbf{/@mi.name@/} /$ if mi.available > 1$/ (/@mi.available@/ available) /$endif$/}
+\centerline{\textit{/@mi.category@/ (/@mi.rarity@/)}} 
+/@mi.body@/
+
+\vspace*{.1in}
+/$ endfor $/
+/$ endif $/
+
+/$ if splices.noteable_items or spellbooks or mundane $/
+\section*{Notable Items}
+/$ if mundane $/
+\subsection{Mundane Items}
+The following mundane items are present in the adventure, and may be kept or
+distributed by the party if found. They have no meaningful cash value if sold.
+ 
+\begin{dnditemize}
+/$ for it in mundane $/
+\item /@it@/
+/$ endfor $/
+\end{dnditemize}
+/$endif $/
+
+/$for book in spellbooks $/
+/@ book | usetemplate('spellbook') @/
+/$endfor$/
+
+/$ if splices.noteable_items $/
+/@splices.noteable_items.body@/
+/$ endif $/
+/$ endif $/
+
+/$ if storyawards $/
+\section*{Story Awards}
+
+/$ for st in storyawards $/
+\par /@st.body2@/
+\vspace{10pt}
+
+/$ endfor $/
+
+/$ for st in storyawards $/
+%\centerline{\textbf{ /@st.variables.code @/ /@st.name@/}}
+\label{/@st.label@/}
+\begin{storyaward}{/@st.variables.code@/}{/@st.name@/}
+/@st.body@/
+\end{storyaward}
+\vspace{15pt}
+/$ endfor $/
+/$ endif $/
+\vfill
+
+/$ if npcs $/
+\chapter{Important Non-Player Characters}
+\label{appendix_important_nonplayer_characters}
+
+/$ for n in npcs $/
+\par\noindent\label{npc_/@n.label@/}\textbf{/@n.name@/} /$if n.pronunciation$/ (/@n.pronunciation@/) /$endif$/\\
+\textit{/@n.race@/, /@n.gender@//$if n.title$/, /@n.title@//$endif$/}\\
+/@n.description@/
+/$if n.quote $/
+\textbf{Quote:} /@n.quote@/
+/$endif$/
+
+/$ if n.stats $/
+/@ n.sblock | usetemplate('monster') @/
+/$ endif $/
+\vspace*{3mm}
+/$ endfor $/
+/$ endif $/
+
+/$ if extra_monsters $/
+\chapter{Additional Creatures}
+\label{appendix_additional_creatures}
+/$ for sblock in extra_monsters $/
+/@ sblock | usetemplate('monster') @/
+/$ endfor $/
+/$endif$/
+
+/$ if spellbook $/
+\chapter{Spell Reference}
+\label{appendix_spell_reference}
+/$ for sp in spellbook $/
+/@ sp | usetemplate('spell') @/
+\vspace*{16pt}
+/$endfor $/
+/$endif$/
+
+/$ if appendix $/
+/$ for app in appendix $/
+\onecolumn
+\titlespacing*{\chapter}{0pt}{-16pt}{0pt}
+\chapter{/@app.name@/}
+\label{appendix_/@app.label@/}
+\Figure*[placement=!h,max width=\textwidth, max height=0.945\textheight]{/@app.image@/}
+/$ endfor $/
+\twocolumn
+\titlespacing*{\chapter}{0pt}{0pt}{0pt}
+/$ endif $/
+
+/$ if bibliography $/
+\chapter{Bibliography}
+\label{appendix_bibliography}
+\begin{flushleft}
+
+
+/$ for bib in bibliography $/
+
+\par /@bib.author@/. ``/@ bib.title @/''. /$ if bib.publisher $/ 
+Published by /@bib.publisher@/, /@bib.year@/. /$ endif $/ %/$ if bib.editor $/Edited by /@bib.editor@/. /$ endif $/ 
+Available from \textit{/@ bib.site @/}.\\ 
+{\small \href{/@bib.link@/}{/@bib.url@/}}
+\vspace*{3mm}
+/$ endfor $/
+\end{flushleft}
+/$ endif $/
+
+\newpage
+\centerline{}
+
+\end{document}

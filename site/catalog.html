@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" content-type="text/html">
+	<link rel="stylesheet" href="/css/advmaker.css">
+	<script language="javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+	<script language="javascript" 
+		src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.js"></script>
+	<script language="javascript" src="template_engine.js"></script>
+	<link rel="stylesheet" href="advmaker.css" media="screen"/>
+
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script>
+  $( function() {
+    $( "#tabs" ).tabs();
+  } );
+  </script>
+
+</head>
+
+<body><div class="main">
+	
+
+
+<h1>AdventureMaker</h1>
+
+<div id="tabs">
+  <ul>
+    <li><a href="#tabs-1">Monsters</a></li>
+    <li><a href="#tabs-2">Spells</a></li>
+    <li><a href="#tabs-3">NPCs</a></li>
+    <li><a href="#tabs-4">Magic Items</a></li>
+    <li><a href="#tabs-5">Bibliography</a></li>
+  </ul>
+
+	<div id="tabs-1">
+	<p>The following monsters are in the AdventureMaker database and may be refered to by name.</p>
+	<hr/>
+		<div class="datadriven" template="col3" data="http://app.dndal.club/advmaker/monsters"></div>
+	</div>
+
+	<div id="tabs-2">
+	<p>The following spells are in the AdventureMaker database and may be refered to by name when adding
+	magic items to an adventure.</p>
+	<hr/>
+		<div class="datadriven" template="col4" data="http://app.dndal.club/advmaker/spells"></div>
+	</div>
+
+	<!--<h2>Sidebars</h2>
+	<div class="datadriven" template="col4" data="http://app.dndal.club/advmaker/sidebars"></div>-->
+
+  	<div id="tabs-3">
+  	<p>The following NPCs are in the AdventureMaker database. When refering to them with an NPC tag, use
+  	the tag entry show for each NPC. This is usually the NPCs name, but may not always be. For example, 
+  	an NPC that changes over time may have different descriptions and different tags but the same name.</p>
+	<hr/>
+		<div class="datadriven" template="npcs" data="http://app.dndal.club/advmaker/npcs"></div>
+	</div>
+
+	<div id="tabs-4">
+	<p>The following magic items are in the AdventureMaker database. When including them in an adventure,
+	you must specify the fields listed in the needs column.</p>
+	<hr/>
+		<div class="datadriven" template="magicitems" data="http://app.dndal.club/advmaker/magicitems"></div>
+	</div>
+
+	<div id="tabs-5">
+	<p>The following works are in the AdventureMaker master bibliography. You may refer to them with by 
+	citation tag by using the listed tag. When you do, the tag will expand to the name of the work. If the work
+	is available for purchase, the name will be hyperlinke to the appropriate site and product. A full bibliographic
+	entry will also appear at the end of the adventure.</p>
+	<hr/>
+		<div class="datadriven" template="bibliography" data="http://app.dndal.club/advmaker/bibliography"></div>
+	</div>
+
+</div>
+
+</body>
+</html>

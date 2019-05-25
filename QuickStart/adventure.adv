@@ -1,0 +1,242 @@
+//This is a comment. It will not show up in the adventure.
+
+//AdventureMaker Home : http://dndal.club/advmaker/
+//Manual :  http://dndal.club/advmaker/manual.html
+//Catalog : http://dndal.club/advmaker/catalog.html
+
+//If you are using Sublime, be sure to select tools|build system|AdvMaker
+//in the menu. Then, use Ctrl+B (CMD+B on a mac) to build your adventure. 
+//This can take a few minutes, please be patient. F6 will enable spell checking
+//in Sublime.
+
+//AdventureMaker adventures are organized in project directories.
+//The adventure text is found in the file adventure.adv.
+//The pdf/ and fg/ subdirectories contain artwork for the pdf
+//and FantasyGrounds versions respectively.
+
+//Adventures start with a preamble, which sets variables and the
+//adventure abstract. Lines that start with a @ are variables; they
+//define things like the title and author. They are followed by the
+//adventure abstract, which should be kept short.
+
+@title The Creepy Crypt
+@code CCC-EX-01-01
+@author John Doh
+@year 2020
+@convention Super-Con
+@tier 1
+@playtime 2
+@coverimage cover.jpeg
+@playtesters Billy Boring, Suzy Same, Tom Terrible, Luke Lazy, Chris Cross
+@artists Formerly Known as Prince, James Brown
+
+Enter the Creepy Crypt, explore its dark rooms and dangerous round abouts. Avoid its traps
+and bring the vampire his dinner. Then escape with the loot.
+
+//New Chapters start with a *. Sections start with **, and subsections start with ***
+
+!splice credits
+All cover and interior art is the property of Wizards of the Coast, and has 
+been made available as a creators resources on http://dmsguild.com.
+!end
+
+* Introduction
+
+The Creepy Crypt is less an adventure and more a collection of examples
+showing how to use AdventureMaker to write an adventure.
+
+** Adventure Summary
+A good adventure summary should give the dungeon master a high level view of
+the adventure background, narrative, and how the story will develop. It should
+provide a road map so that the DM knows where the adventure is headed as he
+reads and prepares to run it.
+
+** Adventure Background
+
+The adventure background section is the place to talk about important places
+and faces for the adventure. If there is important lore or campaign history
+necessary to setup or understand the story it should go in the background
+section as well.
+
+*** Where the Adventure Starts
+Explain a little bit about the setting. Maybe include a citation for more
+information about the setting. For instance, if the adventure starts in Mulmaster,
+you could refer the DM to [[citation: mulmaster2017]]. You can find useful
+information about other areas of the moonsea in [[citation: moonsea2]] and
+[[citation: moonsea3]].
+
+*** People That Need Killing
+Is there an evil cult? This is adventure league, so there is probably an evil cult. Maybe
+explain a little bit about the cult. Are they really evil? They probably view themselves 
+as alt-good. Maybe its the humans who are oppressing the gnolls? Ever think of that?
+
+** Plot Hooks
+Plot hooks help the party come together and get "on stage" for the adventure to begin.
+Try to provide at least two or three so there is some flexibility in things to motivate
+the characters involvement.
+
+*** The Faction Plot Hook
+A guy wearing the same color shirt as you sends you a quest.
+
+> Listen, your a member of INSERT FACTION HERE, and I'm in charge of INSERT
+> FACTION HERE, so go your risk your life doing this crazy thing.
+
+*** Greed
+Promise them treasure. Players love treasure. /b/You don't actually have to deliver it
+in the end/b/. Just promise it.
+
+> There is rumored to be a pile of gold just lying there in those caves. Tons of
+> Gold. Mountains of Gold. Just lying there, waiting for some industrious individual
+> such as yourselves to come haul it away. There certainly isn't an army of Kobolds
+> dedicated to defending a dragon which is certainly not perched on top of the hoard.
+
+* Journey into Danger
+
+In the crypt the characters can expect to find the following:
+-- Skeletons.
+-- Zombies.
+-- Ghouls.
+-- Ghosts.
+-- Probably not a Vampire.
+-- Its a crypt, not a pyramid. No Mummies.
+-- How unlucky would it be to run into a lich. A demi-lich is a real possibility though.
+
+To reach the crypt the characters will need to:
+-# Travel north for 20 miles.
+-# Turn left at the lightning blasted oak tree.
+-# Go straight until they reach the moss covered arch.
+-# Follow the cobblestone path.
+
+>># Weather
+>> The weather during the characters trip to the tower and its crypt is cloudy and overcast,
+>> but the rain does not start until the characters actually enter the surrounding
+>> graveyard. Once the characters enter crypt itself, the rain becomes torrential.
+>> Should the characters attempt to camp outside the crypt they quickly discover
+>> that the combination of cold, wet, and mud makes rest impossible.
+
+>> Once the characters overcome the crypt and its guardians, the storm
+>> breaks and the sun begins to shine. Of course, it will take a while
+>> the ground to dry out and so the characters will be trudging through
+>> mud all the way back to town.
+
+** The Tower
+
+When the characters reach the location of the crypt, they instead find a tower.
+When they enter it, the discover that it is brightly light but decorated with a
+skull and bones motiff. A set of stairs leads up into the tower. In the center
+of the tower there is also a trap door, made of iron and emblazoned with a skull.
+The trap door has a small keyhole, and is locked. The characters will need to
+find the key to pass trough it.
+
+** Meeting the Guardians
+
+On the second floor of the tower the characters will encounter the a figure dressed
+all in black, with a black cape lined with red velvet. If the characters do not
+immediately attack him he will chat happily with the characters, relating the history
+of the tower and explaining that he lives here mostly keeping to himself. He denies
+being undead, and takes exception to any such suggestion. He prefers the term alt-alive.
+
+The vampire is stalling. He knows that he it will take thirty seconds for re-enforcements
+to arrive. Once either the characters attack or his allies arrive, the encounter
+[[encounter: Fight for the Tower]] begins.
+
+!encounter Fight for the Tower
+- weak: Vampire Spawn, 2 Skeleton
+- normal: 2 Vampire Spawn, 4 Skeleton
+- strong: 3 Vampire Spawn, 6 Skeleton
+- map: tower.jpeg
+@mapatend 1
+
+*** Setup
+The characters start standing around the stairs leading down to the first floor.
+The first vampire spawn starts in the middle of the room. Any other enemies enter from
+the stairs leading up. It takes six rounds for everyone besides the first vampire spawn 
+to arrive, less one round for every five seconds the vampire was able to stall the characters.
+
+*** Tactics
+The skeletons rush the characters, each skeleton taking one party member. Skeletons
+only double up once all party members are covered. The vampire spawn focus their collective
+attention on any clerics first, and then move on to other obvious casters.
+
+*** Conclusion
+The fight only ends when one side or the other is completely dead.
+!end
+
+Once the fight is over the party can loot a [[loot: bag of coins : worth : 72]] from the vampire.
+Once of the skeletons also was good quality [[mundane: longsword]] that the party can use.
+
+** Searching the Tower
+Once the party has defeated the towers guardians they will be free to search the tower.
+At the top of the tower is a table. On the table is the key to the crypt in the basement,
+and other items as determined by rolling on the table below.
+
+||| What's on the Table?
+| d20 |Contents | Value|
+|1-5| Nick Knacks | 1gp|
+|6-10| Donuts | 5gp|
+|11-15| A Severed Head| 0gp|
+|16-20| Dinner | 7gp|
+
+* The Crypt
+
+Once the characters find the key on the third floor they may unlock the trap
+door and descend to the crypt. There they find their adversary, the Black Knight,
+and his squad of elite kobolds. [[NPC: Maxwell Truss]] is bound and gagged in the back corner.
+
+When the characters first enter the room the Black Knight will attempt to monologue 
+about his evil plans. We will go on and one about raising the dead, raiding the 
+country side, and funding it all by kidnapping and ransoming hapless peasants.
+As long as the party lets the knight talk the kobolds will be stretching, sharpening
+weapons, and rolling their eyes at their boss.
+The [[encounter: Big Boss Fight]] only begins when the party tires of his ranting and attacks.
+
+>>#Using NPCs
+>> NPCs are defined in separate NPC files. For an example, look
+>> at npcs.example.json. The manual contains the full details on using
+>> NPCs rosters with AdventureMaker.
+
+!encounter Big Boss Fight
+- weak: Black Knight
+- normal: Elite Kobold, Black Knight
+- strong: 6 Elite Kobold, Black Knight
+- map: crypt.jpg
+@colmap 1
+
+*** Custom monsters
+The Black Knight and Elite Kobolds are custom monsters.
+See the file /i/monsterdb.example.json/i/ for how they defined. They serve
+as examples of how to create your own monsters.
+!end
+
+** Looting the Crypt
+The Black Knight, once defeated, is wearing magical chain mail. The pockets of the
+kobolds can be search to turn up 14 gold pieces and 5 silver pieces. There is also
+an [[loot: ebony statue : on the altar worth : 75]].
+[[noshowloot: Kobold Pocket Change : 14.5]]
+
+!appendix_image Waterdeep: waterdeep.jpg
+
+!magicitem Magic Chain Mail
+- item: Armor
+- plus: 2
+- type: Chain Mail
+
+This chain mail is gleaming, the villain kept it well oiled. Always try to include a description
+with the items you hand out.
+!end
+
+!storyaward Saved Maxwell
+@code EX01
+
+The party earns this story award if they saved Maxwell Truss from the Black Knight
+as the end of the adventure.
+
+- playertext:
+Maxwell Truss, lighthouse keeper and proprietor of the rest stop and tavern known
+as "Hofstead's Beacon" owes you his life. In gratitude, he will give you a 50%
+discount on your ale whenever you are at his establishment.
+!end
+
+//To produce the story award certificates, magic item cards, and FantasyGrounds
+//conversion of this adventure, edit the config.ini file and set the stage
+//to publish.

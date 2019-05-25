@@ -1,0 +1,963 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>AdventureMaker Manual</title>
+	<link rel="stylesheet" href="advmaker.css" media="screen"/>
+	<style>	
+	td {
+    	text-align: left;
+	}	
+
+	.example {
+		background-color: lightgray;
+	}
+
+	.caution {
+		color: red;
+	}
+
+	.tip {
+		color: green;
+	}
+
+	</style>
+</head>
+<body>
+<div class="main">
+
+<h1>Introducing AdventureMaker</h1>
+<p>AdventureMaker helps you turn your notes into a finished adventure. AdventureMaker
+lets you focus on the fun, exciting, creative details of adventure writing while it
+handles the tedious technical part such as formatting monster stat blocks and constructing
+experience and treasure tables. And when your done writing AdventureMaker will also convert your
+adventure to FantasyGrounds mod format for on-line play, as well as producing magic item and
+story award certificates. With AdventureMaker you use a markup language (like editing a wiki 
+or a wordpress page) to write the content of your adventure, and let the software worry about
+how it will look.</p>
+
+
+<h2>Getting Started</h2>
+<p>If you have not already done so, you are highly encouraged to start with the <a href="quickstart.html">
+AdventureMaker Quick Start Page</a>. This page will walk you through getting your computer setup to use
+AdventureMaker. It will also show you how to download an example AdventureMaker project, which will show you
+how to use the most important features of AdventureMaker. What you find in that example should be enough
+to get you more than half-way through writing your first adventure. You need only return to this manual
+when you need to know how to handle unusual situations or how to handle tricky finishing details.</p>
+
+<h2>What AdventureMaker Provides</h2>
+
+<p>AdventureMaker does the work of formatting your adventure and supplying game details from its
+database. At present, AdventureMaker is setup to support the writing of adventures for the Community
+Created Content program of the D&amp;D Adventurers League. 
+When you use AdventueMaker to write an adventure, the software will take care of the following
+things for you :</p>
+
+<ul>
+<li><strong>Formatting the cover.</strong> You supply the artwork, AdventureMaker handles the cover text and
+AdventureLeage logo.</li>
+<li><strong>Table of Contents.</strong> AdvntureMaker automatically provides a table of contents. The table
+of contents shows chapters, sections and encounters within those chapters, and appendixes. Sub-sections are
+not listed. The table of contents is hyper-linked for easy navigation of the PDF.</li>
+<li><strong>Legal Disclaimers.</strong> Material licensed using the D&amp;D 5e rules and settings and sold
+on the Dungeon Master's Guild needs to have some legal notices on it, as well as your own copyright.
+AdventureMaker ensures those are placed and visible.</li>
+<li><strong>League Broiler Plate.</strong> AdventureMaker will provide the mandatory Adventure League
+broiler plate, filling in the blanks about length and level of play as necessary.</li>
+<li><strong>Monster Stat Blocks.</strong> AdventureMaker pulls monster stat blocks out of its database
+and adds them to encounters. There is no need for you to manually enter a monsters stats.</li>
+<li><strong>The Adventure Summary.</strong> The first appendix on your adventure is always a summary of
+the adventure. This includes a list of figures need to play the module, XP tables for encounters,
+loot tables for treasure, and the details of magic and other notable items. It also includes
+things like downtime, renown and league DM rewards. AdventureMaker automatically fills all of this
+in based on things like the declared length and tier of your adventure.</li>
+<li><strong>A roster of NPCs.</strong> AdventureMaker allows you to maintain a master
+database of NPCs used in your adventures. When you use one in your adventure, it will appear
+in the important NPCs appendix. AdventureMaker is smart enough to only include those NPCs that you
+use, even if your database is much larger.</li>
+<li><strong>A Bibliography.</strong> When using or referencing material from other authors
+you should be sure to include a full citation of their work. When you use the citation
+mechanism in AdventureMaker you can refer to a work by a code, and AdventureMaker will
+provide the full citation information and a link to where the reader can obtain
+their own copy.</li>
+<li><strong>Certificates.</strong> AdventureMaker automatically generates certificates for magic
+items and story awards when run in publish mode. Magic item certificates include the items
+mechanics as taken from the source where it appears.</li>
+</ul>
+
+<h2>Using Adventure Maker</h2>
+<p>AdventureMaker is cloud software, it exists as a program running on a remote server.
+You use this software by assembling a project directory that contains the text of your adventure,
+a short configuration file, and sub-directories for your art assets. You use a third-party
+text editor, such as <a href="https://www.sublimetext.com">Sublime 3</a>, to write your adventure.
+Then, when your ready, you
+submit your project directory to the server. After giving the server a chance to work,
+you will usually get back a PDF of your adventure, or an error log showing you what needs to be fixed.
+This process is called building the adventure, and the results are always found in the <i>finished</i>
+subdirectory of your project folder.</p>
+
+<div class="caution">
+<p><strong>Caution:</strong> AdventureMaker can take a while to fully process your adventure. As a rule of thumb, it takes
+30 seconds plus an additional 45 seconds per encounter to produce the finished adventure. Please
+be patient and give the server time to work.</p>
+</div>
+
+<h3>Sublime Integration</h3>
+
+<p>The easiest way to use AdventureMaker is with the <a href="https://www.sublimetext.com">Sublime 3
+Text Editor</a>. Once you
+have installed Sublime, you may <a href="download.html">download</a> and install
+the appropriate AdventureMaker integration
+package for your system. This will allow you to set the <tt>Tools | Build System</tt> option in 
+Sublime to AdvMaker, and then submit your adventure to AdventureMaker by
+hitting <strong>CTRL+B</strong> (<strong>CTRL+B</strong> on a Mac).</p>
+
+<h3>Stand Alone Clients</h3>
+
+<p>If you would rather use a different editor than Sublime you may use the
+stand alone AdventureMaker client software. See the <a href="download.html">
+download</a> page for instructions about how to install the stand alone client for your
+computer.</p>
+
+<p>To use the stand alone, create an AdventureMaker project directory or use
+the one provided in the quick start bundle. Open a command prompt, change to the project 
+directory, and run <i>advmaker.bat</i> on windows or <i>advmaker.sh</i> on other systems.
+This will submit your adventure to AdventureMaker, and unpack the results to the
+<i>finished</i> sub-directory.</p>
+
+
+<h2>The Project Directory</h2>
+<p>AdventureMaker adventures are built around a project folder. This project folder contains the text 
+and art work for your adventure. It may also contain things like custom monsters or magic items and master lists
+of NPCs.
+The project folder is just an ordinary folder or directory on your computer, you may name it however you wish.
+It is the contents of that folder that must be named and placed correctly.</p>
+
+<p><i>adventure.adv</i>: Your project folder must contain a file named adventure.adv. This is a plain text file
+where you write your adventure. This file must be in ordinary ascii text; not a word or rtf document. This
+is your adventure source file.</p>
+
+<div class="caution">
+<p><strong>Caution:</strong> If you use a word processor such as Microsoft Word to edit your adventure.adv file you will likely find
+that AdventureMaker can not build your program. This is because programs like word replace double and single
+quotes with left and right quotes and contextual apostrophe symbols, even when saving to plain text. 
+AdventureMaker is smart enough to know when to use left and right quotes when formatting your document, 
+but not smart enough to properly handle these special symbols. If you copy and paste text from a word processor
+be sure to go back and replace these symbols by hand with the appropriate basic symbols using your text editor.</p>
+</div>
+
+<p><i>config.ini</i>: The config.ini file controls some aspects of how AdventureMaker processes your adventure
+seperate from the actual text of the adventure. Mostly it will be used to select between draft, proof reading,
+and production modes. See the section on <a href="#config">config.ini</a> for the details on this file.</p>
+
+<p><i>npcs.*.json</i>: NPCs can be stored in files named npcs.*.json, where the * is replaced with
+a proper name. You may include more on than one NPC file in your adventure source. See the example file
+in the <a href="">quickstart bundle</a> and the section on <a href="">NPCs</a> for details of what this
+file should contain.</p>
+
+<p><i>monsterdb.*.json</i>Custom stat blocks may be placed in files named monsterdb.*.json, where the *
+is replaced with a proper name. You may include more on than one monster file in your adventure source.See the example file
+in the <a href="">quickstart bundle</a> for details of what this
+file should contain.</p>
+
+<p><i>The pdf sub-folder</i>: Any artwork the appears in the PDF version of your adventure, such as cover art, maps, and
+player handouts, must appear in a sub-folder named pdf. This artwork may be in png, jpeg, or pdf format. It is
+recommend you use jpeg format for most art, png format only when you need to use the transparency features of that
+format, and pdf format when you have resolution independent vector art. For jpeg and png files it is recommended
+that you use art work with at least 100 dots per inch of resolution. Artwork at 150 dpi is usually as good as most
+printers can handle, and more resolution will just make the final pdf larger.</p>
+
+<p>If your adventure references a piece of artwork, but it cannot be found in the PDF directory, 
+AdventureMaker will issue an error message and will not attempt to produce the finished PDF file.</p>
+
+<p><i>The fg sub-folder</i>: The fg sub-folder also contains artwork, just like the PDF folder. The difference
+is that this folder contains artwork for the FantasyGrounds version of your adventure. Your fg folder should
+contain a copy of every image in the pdf folder, except for the cover art. However, unlike the PDF directory,
+any encounter maps should always be a 50 dpi resolution. AdventureMaker expects its tactical level maps to be
+at this resolution, and anything else creates problems scaling it tokens to the map grid. Other artwork may be
+any resolution you choose, but 50 dpi is a good choice since it keeps the images small and users computers
+can scale the image if necessary.</p>
+
+<p>FantasyGrounds imposes a standard grid on all battle maps, so it is not necessary that maps in the fg
+directory have a grid. If they do have a grid, that grid must start the the origin pixel in the upper left
+hand corner and be 50 pixels square. Getting the printed grid and FantasyGrounds grids to align can be difficult
+if you change the resolution of your image and it was not originally a multiple of 50. The fantasy grounds
+map align tool can help you tweak your map, find it in the Fantasy Grounds forums with Google.</p>
+
+<div class="tip">
+<p><strong>Tip:</strong>
+Create or obtain all your art work at 300 dpi resolution. Down sample it to 150 dpi for the pdf version,
+and 50 dpi for the FantasyGrounds version. This will give you nice, high resolution images for print 
+and compact, properly aligned versions for onlin play.</p>
+</div>
+
+<p><i>The finished folder</i>: The finished folder is where AdventureMaker puts the results of building your
+program. You do not need to create this folder, and every time you send your project to AdventureMaker the
+contents of this folder will get deleted and replaced.</p>
+
+<h1>AdventureMaker Markup</h1>
+
+<p>AdventureMaker is meant to make simple things simple. Writing text, adding box text and side bars, marking out chapters 
+and sections, and designing encounters are all simple and straight forward. But AdventureMaker is also a powerful
+tool, and like all such tools it helps to understand how it works and the basic ideas the underlie its operation.</p>
+
+<h2>Chapters and Sections</h2>
+<p><div class="example"><pre>
+* Introduction
+
+** Adventure Background
+
+** Plot Hooks
+
+* The Next Chapter
+
+** The Quest Giver
+
+*** Negotiating Payment
+
+**** A Bad Deal
+
+**** A Good Deal
+
+** The Quest Details
+</pre></div></p>
+
+<p>AdventureMaker organizes adventures into chapters. Chapters and sections appear in the table of contents
+at the beginning of the adventure, sub-sections and sub-sub-sections do not.
+Combat encounters always appear at the end of the chapters where they occur. Your adventure must always have
+at least one chapter. AdventureMaker uses the start to the first chapter to mark the end of the adventure
+preamble and the beginning of the body of text.</p>
+
+<p>Lines that start with an asterix mark the boundaries of chapters, sections, sub-sections, and sub-sub-sections.
+New chapters start with a single asterix followed by the name of the chapter. Sections start with two asterixs
+and a name. Sub-sections and sub-sub-sections start with three an four asterixs respectively.</p>
+
+<h2>Basic Text</h2>
+<p>AdventureMaker attempts to format text into paragraphs. Regardless of the length of each individual line, it will
+be placed into a paragraph with the previous line, until something happens to end the paragraph. This means that you are
+free to break lines as convenient during the editing process; AdventureMaker will do the work of stitching them together
+into a paragraph.</p>
+
+<p>New paragraphs begin whenever there is a change in the text, such as the start of a new chapter or section,
+the beginning of an encounter or story award, or a change in the formatting of the text such the beginning or
+end of a box text. A blank line will also end the previous paragraph and begin a new one. In practice, this means
+that the text of your adventure is formed into paragraphs, and you separate paragraphs within a chapter or other
+block of text by simply skipping a line.</p>
+
+<h2>Formatting Text</h2>
+<p><div class="example"><pre>
+/b/This text is in bold/b/, and /i/this text is in italics/i/.
+The page is 8.5/inch/ wide. "That's what the dragon said".
+</pre></div></p>
+
+<p>To format text as bold or italics, enclose with the text with <tt>/b/</tt> or <tt>/i/</tt> respectively. Note that
+unlike HTML, the same symbol is used to mark both the beginning and end of bold and italics. You must use
+these symbols in pairs. Be careful not to end a paragraph without closing off any bold or italic text.</p>
+
+<p>The double quotes symbol, <tt>"</tt>, should only ever be used to mark text in quotes. AdventureMaker converts
+the ordinary double quote symbol into left and right quote marks when it produces your adventure. To do so it
+must find the double quote mark in pairs; if it does not do so you may find strange punctuation marks in
+your text such as an upside down question mark or odd accent marks. If you need to express a distance in inches, either
+write out the word inches or use <tt>/inch/</tt> to get the inches mark.</p>
+
+<h2>Box Text and Sidebars</h2> 
+
+<p><div class="example"><pre>
+>># The Questionable Crow
+>> The Question Crow is a seedy dockside bar in Harrowdale's port district.
+>> The food is bad and overpriced, the drinks are watered down. The
+>> customers frequently have open sores.
+
+>> The Questionable Crow is a good place for mercenaries to find work,
+>> and a bad place for anything else.
+</pre></div></p>
+
+<p><div class="example"><pre>
+> The tavern is crowded and noisy. You scan the room, 
+> looking for your contact but see only the usual grubby patrons.
+
+> Suddenly, a shadow the edge of your vision moves. By the time you
+> can turn to look properly it is hurtling towards you.
+</pre></div></p>
+
+<p>Box text, meant to be read to the players, can be marked by placing a single <tt>&gt;</tt> at the beginning
+of each line of the box test. Sidebars are marked <tt>&gt;&gt;</tt> at the beginning of the line. You can name a side bar 
+by beginning the first line of the sidebar with <tt>&gt;&gt;# [NAME]</tt>. These lines are grouped into
+paragraphs just like ordinary text. Paragraphs of box text and sidebars that are separated by a blank line get grouped into
+the same set of box text or the same sidebar.</p>
+
+<h2>Replacement Codes</h2>
+<p>Replacement codes are pieces of text that AdventureMaker replaces with something else. Sometimes this
+replaced text is very close or identical to what you wrote, but with some additional formatting added to it.
+Sometimes it may be entirely different. Sometimes, but not always, it triggers some additional output later on in the document.
+Replacement codes always have the form <tt>[[CODE: ???]]</tt>. Note that the first semi-colon comes immediately after the code
+with no space in between.</p>
+
+<p>Replacement codes are used for things such as marking treasure descriptions in your adventure, referencing other
+parts of the adventure, and citing other works. Specific replacement codes and examples of their use are discussed later,
+in the appropriate sections based on their actual function.</p>
+
+<h2>Lists</h2>
+
+<p><div class="example"><pre>
+-- If asked about the map Dorum will ramble on and
+on and on and on for a very long time. He will
+resist interruption and talk over questions, but
+without every actually saying anything.
+-- If asked about the girl Dorum just says "Nope".
+-- If asked about monsters Dorum will offer that there will
+likely by orcs, goblins, and harpies.
+</pre></div></p>
+
+<p><div class="example"><pre>
+To reach the Winter Castle the characters must do the following in order:
+-# Put their left hand in.
+-# Put their right hand in.
+-# Shake it all about.
+</pre></div></p>
+
+<p>Lines of text that start with <tt>--</tt> denote items in a bulleted list. Lines of text starting with <tt>-#</tt>
+denote items in a numbered list. Items in a list may stretch across multiple lines of text; an item in a list
+only ends when a new item starts or the paragraph ends because of a blank line or other breaking construct, such
+as the start of a new chapter or section.</p>
+
+<p>It is possible to use lists inside of box text or sidebars, but some additional markup is needed.
+Beacuse these portions of the text already begin with either a > or >> symbol, bullet lists need
+to be marked out with a <tt>/l/</tt> tag at the beginning and end of the list. Numbered lists
+should begin and end with a <tt>/nl/</tt> tag. Within the list tags, use <tt>--</tt> as normal to denote
+items on the list.</p>
+
+<h2>Tables</h2>
+
+<p><div class="example"><pre>
+|||Random City Encounters
+| d%|Encounter |
+| 1-40 | 1d6 members of the city watch |
+| 41-50 | 2 orphans, begging for coins |
+| 51-65 | An aristocrat |
+| 66-80 | A body in the gutter |
+| 80-95 | A gang of pick pockets |
+| 95+ | 1d6 Thugs in a back alley |
+</pre></div></p>
+
+<p>AdventureMaker allows you to mark a line of text as being a row in a table, by beginning and ending it with a vertical
+bar (<tt>|</tt>). Within that line of text, columns are also separated by a vertical bar. Each row of the table
+must appear on one line of the adventure source, and there must be no blank lines between rows of the table.</p>
+
+<p>The first row of a table provides the headers for the table, and is used to determine how the contents of each column are
+justified. Column justification is based on the space between the text and the separating bars. If there is a space between
+the bar on the left and the text, but no space between the text and the right separator, the column will be right justified.
+Conversely, if there is no space between the left separator and the text, but a space between the text and the right separator,
+the column will be left justified. If there are no spaces around the text, or space on both sides, the text of
+the column will be centered.</p>
+
+<p>If you wish to give your table a name, you may be so by using three vertical bars (<tt>|||</tt>) followed by the name
+of the table at the start of the table. Giving the table a name is optional. <!-- Alternatively, you may use
+four vertical bars (<tt>||||</tt>tt> to define a table that will span both columns of the document.--></p>
+
+<h2>Comments</h2>
+<p><div class="example"><pre>
+// This line will not appear in the output.
+</pre></div></p>
+
+<p>Comment lines provide a way to make notes in your adventure text without those notes appearing 
+in the finished product. They can be used as reminders to yourself, notes to later editors, or
+as a way to hold onto alternate version of the text. Any line that begins in as <tt>//</tt> is
+a comment, and will not affect the final results.</p>
+
+<h2>Variables</h2> 
+
+<p>Many different elements of how an adventure is laid out and how the adventure template is applied are controlled by
+variables. A variable appears on a line by itself, and has the format <tt>@name value</tt>. Variables can appear 
+before the start of the first chapter, and in relocatable text blocks such as encounters and magic items. What
+variables are available and what they mean depends on the context. See later sections for the available
+variables and the possible values for them.</p>
+
+<h2>Relocatable Text</h2>
+<p>Relocatable text blocks are special sections of text which can appear anywhere in your adventure source, but which will always
+relocate to their pre-determined position when the adventure is formatted. This allows you to define things like
+encounters and magic item close to the part of the adventure that deals with them, even though they will need to placed
+elsewhere when the adventure is formatted.</p>
+
+<p>Blocks of relocatable text always start with a <tt>!something NAME</tt> command line, and end with an 
+<tt>!end</tt> line. They may not be nested, end one relocatable text block before you begin another.
+Within the relocatable text block can write text just like you do in other parts of the adventure. What this
+text represents will vary depending on what type of block you are writing, but is usually the descriptive
+flavor for whatever the relocatable text is for.</p>
+
+<p>Relocatable text blocks also contain special contextual command lines, that follow the 
+form  <tt>- command:</tt>. These lines provide
+additional information that needs special handling. For instance, in an encounter the <tt>- normal:</tt> line
+provides information what monsters are present on normal difficulty.</p>
+
+<p>Blocks of relocatable text also have their own variables, and each type of relocatable text understands different
+variables. For instance, magic item blocks have a variables to control the number of copies of an item present in the
+adventure and whether or not certificates should be produced for them. Variables declared inside a relocatable block
+do not affect anything outside of that block, and variables defined outside of a block do not carry over
+into the block.</p>
+
+<p>AdventuerMaker use relocatable text commands to describe encounters, magic items, spell books, story awards
+and supplemental broiler plate text.
+See the appropriate sections below for the details of each, and examples of their use.</p>
+
+<h1>The Preamble</h1>
+<p><div class="example"><pre>
+</pre></div></p>
+
+<p>Every AdventureMaker adventure begins with a preamble. This is a collection of variables and text that
+appears before the first chapter of your adventure. At a minimum, the preamble of an adventure should contains variables to 
+set the author, title, year, convention, code, tier, and expect playing time of the adventure. Any text
+that appears before the start of the
+first chapter will become the abstract or teaser for the adventure; the text the normally appears on the front
+or back cover.</p>
+
+<p>AdventureMaker understands a number of different variables in the preamble, each of which sets or controls
+a specific setting. The table below describes the possible variables, if they are required, and the function of each.</p>
+
+<table>
+<tr>
+	<th>Variable</th>
+	<th>Purpose</th>
+	<th>Presence</th>
+</tr><tr>
+	<td>@title</td>
+	<td>The name of the adventure</td>
+	<td>Mandatory</td>
+</tr><tr>
+	<td>@code</td>
+	<td>The code for the adventure, should start with CCC-.</td>
+	<td>Mandatory</td>
+</tr><tr>
+	<td>@author</td>
+	<td>The primary author or authors of the adventure.</td>
+	<td>Mandatory</td>
+</tr><tr>
+	<td>@convention</td>
+	<td>The convention where the adventure first appeared.</td>
+	<td>Mandatory</td>
+</tr><tr>
+	<td>@year</td>
+	<td>The year the adventure appeared. Also used for the copyright year.</td>
+	<td>Mandatory</td>
+</tr><tr>
+	<td>@tier</td>
+	<td>The tier of the adventure. Must be a number from 1 to 4.</td>
+	<td>Mandatory</td>
+</tr><tr>
+	<td>@playtime</td>
+	<td>The number of hours the adventure is expected to take. Should be 2, 4, or 8.</td>
+	<td>Mandatory</td>
+</tr><tr>
+	<td>@coverimage</td>
+	<td>Name of the file containing the cover art.</td>
+	<td>Optional</td>
+</tr><tr>
+	<td>@editors</td>
+	<td>List of people receiving editorial credit for the adventure.</td>
+	<td>Optional</td>
+</tr><tr>
+	<td>@artists</td>
+	<td>List of people receiving credit for the art in the adventure.</td>
+	<td>Optional</td>
+</tr><tr>
+	<td>@playtesters</td>
+	<td>List of people receiving play test credit for the adventure.</td>
+	<td>Optional</td>
+</tr><tr>
+	<td>@nodivxp</td>
+	<td>Instructs AdventureMaker to not include the table XP by Party Size in the summary. To use set the value as 1.</td>
+	<td>Optional</td>
+</tr><tr>
+	<td>@nodivgp</td>
+	<td>Instructs AdventureMaker to not include the table Treasure by Party Size in the summary. To use set the value as 1.</td>
+	<td>Optional</td>
+</tr><tr>
+	<td>@minxp</td>
+	<td>Overrides the minimum XP calculation done by AdventureMaker with the provided value. Must by a number.</td>
+	<td>Discouraged</td>
+</tr><tr>
+	<td>@maxxp</td>
+	<td>Overrides the maximum XP calculation done by AdventureMaker with the provided value. Must by a number.</td>
+	<td>Discouraged</td>
+</tr>
+</table>
+
+<p>If it is not possible to acquire all the listed treasure in your adventure, then you may chose to exclude the 
+<i>Treasure By Party Size</i> table from the adventure summary by setting the variables <tt>@nodivgp 1</tt>. If
+branching paths or optional encounters means that the character will not face every combat in the adventure,
+you should exclude the <i>Experience By Party Size</i> table from the summary. You can do this by setting
+<tt>@nodivxp 1</tt>. If you do this, you should also manually determine and set the minimum and maximum xp
+values for the adventure by setting the values of <tt>@minxp</tt> and <tt>@maxxp</tt>. Note that setting
+the minimum and maximum experience for the adventure is not necessary when the characters are expected to
+face all the combats; AdventureMaker has an algorithm for determining reasonable values in this case.</p>
+
+<h2>Tags, Names, and Databases</h2>
+<p>AdventureMaker provides a database of various elements such a monsters, spells, and magic items. When
+it encounters an appropriate reference or usage in the adventure source, the database is consulted and the relevant
+details are added to your adventure. Every database element is reference by a tag. A tag a string of letters, spaces, and sometimes
+numbers that uniquely reference that entry in the database. Any reference to an item in the database is done using the tag.
+Entries in the database also have a "name" field, which is the name of whatever that monster, spell, npc, etc. You
+use the tag to reference the item in the database, but it is the name of the item that will appear at the appropriate
+place in the adventure. In most cases, the tag and the name of the item are the same, but not always. This makes
+it easy to find and use the database entries you are interested in, but can also be confusing if you are not careful.</p>
+
+<p>For example, if you want to include an Orc War Chief in your adventure, you will use the tag "Orc War Chief" to
+include the entry for the monster named Orc War Chief. Because the name and the tag are the same, you know exactly 
+what you are getting. Suppose instead that you want to include a Ancient Red Dragon in your adventure. 
+There are two entries for Ancient Red Dragons in the database. One tag is "Ancient Red Dragon" and the other is
+"Ancient Red Dragon in Lair". Using either of these tags to include a red dragon in your encounter will result
+in the Ancient Red Dragon stat block appearing. However, if you use the tag "Ancient Red Dragon in Lair" you will
+also get the sidebar that includes the lair actions for a dragon in its lair.</p>
+
+<p>Citations are one place where tags to not match titles. Usually the tag for an other work will be its abbreviation
+or adventure code. You use the tag to refer to it with the <tt>[[citation: TAG]]</tt> code, and AdventureMaker
+replaces that code with the full title of the work, hot linked to a page where the reader can purchase it.</p>
+
+
+<h1>Encounters</h1>
+
+<p><div class="example"><pre>
+!encounter Raid on the Orc War Camp
+- weak: 2 Orc, Orc War Chief
+- normal: 3 Orc, Orog, Orc War Chief
+- strong: 3 Orc, Orog, Orc War Chief, Orc Eye of Gruumsh
+- noxp: Kobold, Goblin
+- map: orc_base.jpeg
+
+** Setup
+A few notes about setting up the map.
+
+** Tactics
+The orcs should probably have some tactics. The kobolds and goblins present
+will just run.
+
+!end 
+</pre></div></p>
+
+<p>Encounters are the most important type of relocatable text in an adventure. An encounter may occur anywhere
+after the start of the first chapter, and always belongs to the chapter in which it appears.
+sRegardless of where they occur in a chapter, encounters will always appear at the end of their chapter, in the
+order in which they appear in the adventure source. This allows them to be laid out in a way that attempts to keep
+the monster stat blocks on facing pages.</p>
+
+<p>Encounters always begin with an <tt>!encounter NAME</tt> line, and end with <tt>!end</tt>. You can use the
+<tt>[[encounter: NAME]]</tt> replacement code to refer to an encounter in the text of your adventure, and it will
+be replaced with a hot link to the first page of the encounter.</p>
+
+<p>Encounters are formated as the equivalent of a section within the chapter; that is, they are implicitly a <tt>**</tt>
+heading. You may use sub-sections (<tt>***</tt>) and (<tt>****</tt>) sub-sub-sections within an encounter, but you
+may not start a chapter or section within an encounter. If you attempt to do so AdventureMaker will return an error
+so you can correct the problem.</p>
+
+<p>AdventureMaker places a table of monsters present at each encounter difficulty at the start of
+the encounter. This is followed by the text of your encounter, the encounter map if any, and then
+the stat blocks for the encounter.</p>
+
+<h2>Monsters and Encounter Difficulty</h2>
+AdventureMaker supports encounters with three levels of difficult, weak, normal, and strong; 
+corresponding to party strength. The monsters appearing in each encounter are specified using a
+context line with the appropriate strength. The line itself is a list of monsters, separated by
+commas. If more than one of a particular monster should appear at a given difficulty level, 
+the number present should appear before the name of the monster. Note, you must always use 
+the singular name of the monsters to appear, not the plural form. You do not have to supply all
+three difficulty levels, put you should always provide at least one.
+
+<p>The <tt>noxp</tt> context line allows you to add additional stat blocks to the encounter, without
+having them included in the XP calculations for the encounter or the adventure. Use this feature
+to add stat blocks for summoned creatures, allies of the party, or other situations where it 
+will be useful for the Dungeon Master to have the stat block handy without including a creature
+in the XP tally. If a number is specified with a creature on the xp line, that requirement
+will be reflected in the table of the required minatures.</p>
+
+<h2>Encounter Maps</h2>
+You can provide a tactical map for an encounter using the map context line. Like all artwork, it
+needs to be a jpeg, png, or pdf file. It is recommend you use 150 dpi for the pdf version. You must
+use a 50 dpi version for the FantasyGrounds module or the FantasyGrounds grid will not line up properly.</p>
+
+<h2>Lair Actions and Other Additions</h2>
+<p>Creatures with powers that are specified outside their stat
+block, such as lair actions, hag coven powers, or similar, have additional entries in the monster
+catalog. The tags for these entries indicate what additional information they contain. For example:
+"Gold Dragon in Lair" is a Gold Dragon with Lair actions. When you add one of these to an encounter
+their additional powers will appear as a sidebar at the very end of the encounter. Any relevant adjustments
+to the creatures CR will also be made.</p>
+
+<h2>Reordering and splitting stat blocks</h2>
+
+<p><div class="example"><pre>
+- order: Wraith, !Banshee, Shadow
+</pre></div></p>
+
+<p>AdventureMaker attempts to layout stat blocks in a way that will minimize the number of pages required.
+It is not particularly good at this, and sometimes it will be helpful to adjust the order in which stat
+blocks occur. Every entry on the order line must have already been included in the encounter using a 
+difficulty line or a <i>noxp</i> line; and every entry included must show up in the order line. Entries
+not on the order line will be silently dropped from the output. Do not include numbers on the order line.</p>
+
+<p>If an entry on the order line is preceded by an exclamation mark (<tt>!</tt>) then that stat block 
+will be split across both columns. This is useful when you have three
+stat blocks that each require enough vertical space that no two of them 
+can share a column, but which leave enough space at the bottom of the page that 
+the third one could be split across both columns to get all three on the same page. 
+</p>
+
+<p>AdventureMaker can not force the split block into a position at 
+the bottom of the left hand column or block out the space in the right block to 
+prevent another stat block from writing over it, and this makes using a split block correctly tricky.
+Start by identifying three stat blocks 
+that can be fit onto a single page by splitting one of the blocks. Place these
+blocks as the final three entries on the order line. Determine which two blocks are the closest 
+in size to each other. The longest of these two blocks should be placed first. The shorter
+of the two blocks will be placed third. The remaining block goes in the middle,
+and gets split by placing an exclamation mark in front of it.
+
+<h2>Tweaking Encounter Layout</h2>
+<p>AdventureMaker also provides several variables which can be set in an encounter
+that determine how that encounter is laid out. This can be useful when trying to prepare
+the final draft of the adventure, as it allows the presentation of each encounter to be fine
+tuned based on its content and the content around it.</p>
+
+<p>Setting <tt>@noskippage 1</tt> will allow an encounter to start on an even numbered (right hand) page. 
+This can be useful when an encounter is less than four pages long, and the page preceding it 
+was left blank in an attempt to ensure that the last two pages are facing each other.</p>
+
+<p>Setting <tt>@mapatend 1</tt> will move the map from the second page of the encounter to the end. This has
+the effect of forcing the encounters stat blocks onto the first page of the encounter, if there is
+sufficient space. This can be useful when the encounter text is short, and there is room to place some stat blocks
+on the first page.</p>
+
+<p>Setting <tt>@colmap 1</tt> will force the map into a single column. This can be useful for
+maps that are not very wide compared with their length, but be careful that the resulting image
+is still legible.</p>
+
+<h1>Monsters</h1>
+<p><div class="example"><pre>
+!monster Pit Fiend
+!namedmonster Klauth/Ancient Red Dragon
+!skinmonster Bony Man/Skeleton
+</pre></div></p>
+
+<p>It is possible to add a monster to an adventure without including it as part of an encounter.
+On a single line, place a <tt>!monster TAG</tt> command to ad the given monster to the adventure.
+Its stat block will appear in an appendix of additional stat blocks as the end of the adventure.
+No text will appear in the adventure where this command occurs, it only adds the monster
+to the appendix.</p>
+
+<p>The <tt>!namedmonster NEW / EXISTING</tt> and <tt>!skinmonster NEW / EXISTING</tt> provide a
+simple way to rename and reuse monstes without creating new stat blocks. Both of these commands
+will create a duplicate of the stat block with the <tt>EXISTING</tt> tag, and then set both the
+name and the tag of that new stat block to <tt>NEW</tt>. Later uses of the monster tag given by
+<tt>NEW</tt>, either in an encounter or with <tt>!monster</tt> command,
+will use this renamed stat block. Use <tt>!namedmonster</tt> for individuals, and <tt>!skinmonster</tt>
+to create non-unique monsters.</p>
+
+<h1>Non-Magical Treasure</h1>
+<p><div class="example"><pre>
+When the characters loot the [[loot: goblin's chest : they find : 135]].
+The chest also contains a nicely made suit of [[mundane: chain mail]].
+For successfully completing the mission the characters will be paid 100 gp.
+[[noshowloot: Payment for killing goblins : 100]]
+</pre></div></p>
+
+<p>AdventureMaker provides several replacement codes which allow you to mark monetary treasure in your
+adventure source. When you use these to declare the treasure in your adventure, that treasure will
+automatically be included on the treasure tables found in the Adventure Summary appendix.</p>
+
+<p>Items with monetary value should be marked with a loot tag. The loot tag has the format
+<tt>[[loot: ITEM : BRIDGE TEXT : VALUE]]</tt>. The first field of the loot tag, the item, is the the entry that will
+appear in the treasure table at the end of adventure. The bridge text connects that item description to the value, and
+the value is the items worth in gold pieces. AdventureMaker replaces the loot tag with the item, followed by the 
+bridge text, and then the value; it appends the gp symbol. When this tag appears in your adventure source,
+the finished adventure text will read "ITEM BRIDGE TEXG VALUEgp". Using the loot tag will ensure that
+the text of your adventure and the treasure tables in the appendix always agree on the value of items found; since
+the value only appears once you do not have to remember to change it in multiple places if it gets revised.</p>
+
+<p>In some cases, such as when an item appears on a table, you will not be able to use the loot tag. For those
+occasions, the noshowloot tag can be used to add an entry to the treasure tables without any corresponding
+mention showing up in the text. Be very careful with noshowloot; when you use it you create the possibility
+of having the text of your adventure disagree with the treasure tables in the adventure summary.</p>
+
+<p>Occasionally the characters may find mundane items with no cash value, but which they may wish to keep.
+These items may be marked in the text as [[mundane: ITEM]]. These items will then show up on the list of
+mundane items, found in Notable Items section of the treasure summary at the end of the adventure.</p>
+
+<h1>Magic Items</h1>
+
+<p><div class="example"><pre>
+- item: Potion of Healing
+@available 3
+@nocert 1
+!end
+</pre></div></p>
+
+
+<p><div class="example"><pre>
+!magicitem Magic Sword
+- item: Weapon
+- plus: 2
+- type: Long Sword
+
+@image magicsword.jpeg
+
+This finely made blade is superbly balanced and razor sharp. It emits a very 
+faint blue glow, just barley visible when it is unsheathed in the dark.
+!end
+</pre></div></p>
+
+<p>Magic items are created using the <tt>!magicitem NAME</tt> relocatable text command. The type of magic item
+is determined by an <tt>- item: TAG</tt> context line in the magic item block. The item line establishes
+what the item is in terms of its mechanics, and these mechanics appear in the item description in the 
+Adventure Summary and on the certificates generated by AdventureMaker. Any text included in 
+the magic item block is taken as the flavor or descriptive text for the item. You may not use
+chapter and section headings in this text, but other markup is accepted, including tables and lists.
+Check the <a href="catalog.html">content  catalog</a> for a list of magic items that AdventureMaker understands.</p>
+
+<p>Many magic items need to have additional details filled in. For instance, magic weapons need to have
+their type and plus specified. If a particular type of magic item needs additional details, those
+are specified on context lines matching the particular details to be filled in. The content catalog
+will tell you what additional fields needs to be provided for each item. If you miss a needed item,
+AdventureMaker will return an error.</p>
+
+<p>You may provide an image of an item to appear on the item certificate by setting the <tt>@image</tt>
+variable. You may prevent a cert from being generated for an item by setting <tt>nocert 1</tt>. If more
+than one instance of an item is available in an adventure, you can set the variable <tt>@available</tt>
+to reflect the total number that can be found in the adventure. Unless certs are disabled for that
+item, one cert of each instance will appear in the certificate file.</p>
+
+<p>You can use the <tt>[[magicitemref: NAME]]</tt> replacement code to hyper-link from the text of your
+adventure to its description in the treasure summary.</p>
+
+
+<h2>Spellbooks</h2>
+<p><div class="example"><pre>
+!spellbook Necromancers Spell book
+- spells: Animate Dead, Create Undead, Blight, Circle of Death
+
+This foul book is bound in human skin and inked in blood.
+!end
+</pre></div></p>
+
+<p>AdventureMaker provides a relocated text element for describing spell books, <tt>!spellbook [NAME]</tt>.
+Spell books described this way will always appear at the end of the adventure, in the summary appendix, in
+the notable items section with a heading matching the name of the spell book. The text of the block
+will appear first, as the description of the spellbook. This will be followed by a list of the spells found in 
+the spellbook, formatted by spell level.</p>
+
+<p>You specify the spells in a spell book by using a <tt>- spells:</tt> line within the spell book block.
+Spell need to be properly capitalized and separated by commas. You may have more than one <tt>- spells:</tt>
+line in the spellbook; multiple lines will be merged together to create the final list of spells.</p>
+
+<h1>Story Awards</h1>
+
+<p><div class="example"><pre>
+!storyaway Saved the Dragon
+@code DRG01
+The party earns this reward if they saved the Dragon and prevented
+him from being eaten by the princess.
+- playertext:
+Your quick thinking and heroic actions have saved the dragon Borchor from being
+devoured by the Tin Princess. He has promised that one day he will repay the favor.
+Just not with treasure from his hoard. He's keeping that.
+!end
+</pre></div></p>
+
+<p>Story awards are defined in relocatable text blocks. Although they can occur anywhere in the text of
+your adventure, the finished adventure always places them at the end of the adventure summary. Each story
+award has two parts, each composed of ordinary text formatted using the usual AdventureMaker rules. The
+first part is for the Dungeon Master only. Usually this will just be a brief reminder of how or why the
+characters earn the story award. It appears only in the adventure summary, just before the story award.
+It should be used to remind the Dungeon Master of why and how the party earns the story award.
+The rest of the text is player's text for the story award; it appears in both the summary and on the 
+story award certificates generated by AdventureMaker.</p>
+
+<p>When defining writing the story award, the Dungeon Master's reminder text must appear first.
+The context line <tt>- playertext:</tt> ends the Dungeon Master's text and starts the player text.</p>
+
+<p>Story awards should have a code associated with them, so they can be easily referenced in player logs
+and in later adventures. Use the <tt>@code</tt> variable to set the code for the award.</p>
+
+<h1>Splices</h1>
+<p><div class="example"><pre>
+!splice credits
+Special thanks to Klauth for funding this project.
+!end
+
+!splice advleague_rewards
+Harpers who manage to successfully frame the Lord's Alliance for the theft 
+of the Zhentarim's shipment earn an extra point of renown.
+!end
+</pre></div></p>
+
+<p>Sometimes it will be useful to insert text into the portions of the text normally produced by the
+AdventureMaker templates. Splices allow you to do that. A splice is a relocated text block that appears
+in a specific place based on its name. Each named splice may appear only once. AdventureMaker will not
+throw an error if you use a splice it does not recognize, but the text for that splice will not
+appear in your adventure.</p>
+
+<p>AdventureMakers understands the following splices:</p>
+
+<p><tt>!splice credits</tt>. The text of this block will appear right after the credits. Use it to 
+add additional credits and acknowledgments to your adventure.</p>
+
+<p><tt>!splice preliminaries</tt>. The text of this block will appear right after the opening Adventurers League
+broiler plate, as part of the "Preliminaries" chapter. This is a good place to add additional instructions about
+running your adventure in an Adventurers League setting.</p>
+
+<p><tt>!splice notable_items</tt>. This text will appear in the "Notable Items" sections of adventure summary, after
+the list of mundane items and after any spell books present in the adventure. Use it as a catch all for rewards
+that do not fa it into an existing category. Most items should start with their own sub-sections (<tt>***</tt>) heading,
+you you can insert an entirely new category of reward after notable items by using a section (<tt>**</tt>) heading.
+</p>
+
+<p><tt>!splice advleague_rewards</tt>. This text will appears right after the body of the Adventurers League rewards
+section in the Adventure Summary. The Adventures League Rewards section is where default renown and downtime for the 
+adventure appears, based on the adventure length. If you want to award additional renown for successful faction missions,
+use this splice to add those notes to the adventure.</p>
+
+<h1>References and Hot Links</h1>
+<p><div class="example"><pre>
+When the players reach the crypt door, hand them
+[[appendix: Player's Handout - Crypt Door Puzzle]].
+
+Once the characters have gotten the door open and entered the
+crypt, the encounter [[encounter:: Vampire Lair]] begins.
+</pre></div></p>
+
+<p>AdventureMaker allows you to mark references to other parts of your adventure. It will then turn these references
+into hot links to those parts of the adventure. Chapters, appendices, encounters, NPCs, magic items and story awards
+can all be referenced by name using the appropriate replacement code. You may also place and reference arbitrary
+labels anywhere you want, if you need to link to a specific part of the adventure. Regardless of the type
+of reference used, the resulting text is usually the name of the thing referenced; which is the same as the contents
+of the reference tag. The NPC tag links to the NPC with the given tag, and the text of the link
+becomes the name of the NPC. In the majority of cases the tag is the same
+as the NPC's name, but if the NPCs tag and name are different remember that you must use the NPCs tag rather than their name.
+In the case of a label, the label itself produces no visible output in your adventure.</p>
+
+<p>Note that you may use the appendix tag to reference image appendices you create with the <tt>!appendix_image</tt>
+declaration, or you may reference the appendices created by AdventureMaker. For example, you can
+reference the Adventure Summary with <tt>[[appendix: Adventure Summary]]</tt>, or the appendix on
+Important Non-Player Characters as [[appendix: Important Non-Player Characters]].</p>
+
+<table class="reference">
+	<tr>
+		<th>Code</th>
+		<th>Link to</th>
+	</tr><tr>
+		<td>[[chapter: NAME]]</td>
+		<td>Chapter with the given name</td>
+	</tr><tr>
+		<td>[[appendix: NAME]]</td>
+		<td>An appendix with the given name</td>
+	</tr><tr>
+		<td>[[encounter: NAME]]</td>
+		<td>The encounter with the given name</td>
+	</tr><tr>
+		<td>[[magicitemref: NAME]]</td>
+		<td>The magic item with the given name</td>
+	</tr><tr>
+		<td>[[storyaward: NAME]]</td>
+		<td>The story award with the given name</td>
+	</tr><tr>
+		<td>[[NPC: TAG]]</td>
+		<td>Description for the named NPC</td>
+	</tr><tr>
+		<td>[[reference: NAME]]</td>
+		<td>The previously defined label</td>
+	</tr>
+</table>
+
+<h1>Citations</h1>
+<p>When you reference events, characters, plots, or other material by other authors, you should provide a proper citation
+to their work. AdventureMaker includes an extensive database of existing works to make this easier, and you can access this 
+database with the <tt>[[citation: TAG]]</tt> replacement code. To make a citation, use the citation code with the tag of the
+work you are citing, not the title. You can find the tags of other works in <a href="catalog.html">Content Catalog</a>.
+AdventureMaker will replace the citation in your adventure source with the title of the work, hyper linked to the a page
+where the reader can purchase the work; usually DMsGuild or Amazon. It will also add the full publication details to
+the bibliography that appears at the end of your adventure.</p>
+
+<h1>Odds and Ends</h1>
+<p>You may add experience for accomplishing feats, tasks and quests to your adventure with the <tt>[[xp: NAME : VALUE]]</tt>
+tag. Quest XP goes on its own table in the adventure summary, with each character earning the given amount (it is not
+split between party members). This tag produces no output in body of the adventure, it only results in the table
+entry.</p>
+
+<h1>Non-Player Characters</h1>
+<p><div class="example"><pre>
+{
+	"Maxwell Truss" : {
+		"name" : "Maxwell Truss",
+		"title" : "Lighthouse Keeper",
+		"race" : "Human",
+		"gender" : "Male",
+		"description" : "Maxwell is stocky with a bushy beard.",
+		"quote" : "No tabs; cash up front.",
+		"stats" : "Commoner"
+	}
+}
+</pre></div></p>
+
+<p>Non-players characters are special. They are likely to appear in more than one adventure, and they should be consistent
+when they do appear across multiple works. To facilitate this, AdventureMaker moves NPCs out of the adventure source 
+and into specially formatted files in your adventure project directory. When you use the <tt>[[NPC: TAG]]</tt>
+will place that NPCs description in the Important Non-Player Characters appendix, and then 
+replace the code with the name of the NPC, hyper-linked to their entry.</p>
+
+<p>NPCs descriptions appear in separate NPC files that are placed in the project directory. These files should be
+named <i>npcs.X.json</i>, where X should be something meaningful to the writer. For example, if your writing 
+group is sharing NPCs for the city of Baldur's Gate, you might name your NPC file <i>npcs.bg.json</i>.</p>
+
+<p>The NPC file should be formatted as a JSON dictionary. Each top level key should be the tag for the NPC, 
+and should map to a dictionary description the NPC. It is recommended you see the file <i>npcs.example.json</i>
+in the quick start bundle for an example. Fields for the dictionary describing the NPC are <i>name, 
+race, gender, title, quote</i> and <i>description</i>. All values should be strings. The title, pronunciation, quote,
+and gender fields are optional.</p>
+
+<p>You may also add a stat block to an NPC, which will appear directly after their description. To do so, add
+the <i>stats</i> field, and set its value to the tag of a stat block in either the master catalog or one of
+the monster files in your project. The stat block found under your 
+NPCs description will always have the name of the NPC, even if you are using a standard stat block to describe
+the NPC.</p>
+
+<p>You may also use the <tt>[[imagehere: IMAGEFILE]]</tt> replacement code to add an image for your NPC to
+their description. If you do, place the code at the very end of the description field.
+Be careful when doing so, AdventureMaker has no controls for the sizing or placement
+of such images and adding them can sometime lead to odd formatting for NPCs listings.</p>
+
+<h1>Maps and Artwork</h1>
+<p><div class="example"><pre>
+!appendiximage Player Handout 1 - Dungeon Map: dungeon_map.jpeg
+
+[[imagehere: pretty.png]]
+</pre></div></p>
+
+<p>The <tt>!appendiximage NAME: FILE</tt> command will allow you to add an image as an appendix to the adventure.
+This is useful for things like area maps and player handouts. The appendix will have the given name, which will appear
+at the top of the page and in the table of contents. This is also the name you can use to refer to the appendix with the
+<tt>[[appendix: NAME]]</tt> reference code. The image will be centered on the page, scaled to be as large as possible.
+Note however that if the image is already larger than the area of the page you will need to scale it down yourself. You 
+should also trim any white space surrounding the image, since AdventureMaker will provide adequate margins on the page
+for you.</p>
+
+<a name="config"><h1>The Config File</h1></a>
+<p><div class="example"><pre>
+[output]
+stage=publish
+</pre></div></p>
+
+<p>In your project directory, at the same level as the <i>adventure.adv</i> file, there should be a 
+file named <i>config.ini</i>. This file contains control settings for AdventureMaker, separate
+from the text and content of your adventure. This file is a conventionally formatted ini file.
+This means that it contains sections, which begin with the section name in square brackets. Within
+each section there are variables and values for those variables, written in a <tt>variable=value</tt>
+format. There may be be additional lines that start with a # sign, these are comments and have no effect.</p>
+
+<h2>The [output] Section</h2>
+<p>The stage variable affects what kind of finished output AdventureMaker returns. Valid options are
+<i>draft, proof, production,</i> and <i>final</i>. Draft mode will produce the finished <i>adventure.pdf</i>
+file and nothing else. Proof mode will produce a single column, double spaced version of the adventure
+that is missing monster stat blocks and most adventure maker provided broiler plate. This is useful
+for proof reading and copy editing. Production mode will return the pdf for the adventure, magic iterm
+certificates, story certificates and the FantasyGrounds conversion. Export mode will return the latex source
+files for the adventure and certificate, along with the style file and art assets required to build them.
+If you have to Google LaTeX, expert mode is not for you.</p>
+
+</div></body>

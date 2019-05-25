@@ -1,0 +1,37 @@
+\begin{itemcert}{/@name@/}
+\centerline{\textbf{/@category@/ (/@rarity@/) /$if attunement $/[Requires Attunement]/$endif$//$if consumable $/[Consumable]/$endif$/}}
+/$ if attuneby $/
+\centerline{\textit{Requires Attunement by /@attuneby@/}}
+/$endif$/
+
+/$ if variables.image $/
+\centerline{\includegraphics{/@variables.image@/}}
+/$endif$/
+
+/@body@/
+
+/$ if spell $/
+\vspace*{0.5em}
+\hrule
+\vspace*{0.5em}
+/@ spell| usetemplate('spell') @/
+/$endif$/
+
+\tcblower
+\begin{center}
+\textbf{Found in\\/@variables.code@/ /@variables.advtitle@/}
+\end{center}
+\begin{center}
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
+\small
+\cellcolor{gray}\color{white} Dungeon Master & \\ \hline
+\cellcolor{gray}\color{white} DM DCI\# & \\ \hline
+\cellcolor{gray}\color{white} DM Signature & \\ \hline
+\cellcolor{gray}\color{white} Player & \\ \hline
+\cellcolor{gray}\color{white} Player DCI\# & \\ \hline
+\cellcolor{gray}\color{white} Character & \\ \hline
+\cellcolor{gray}\color{white} Date & \\ \hline
+\end{tabularx}
+\end{center}
+\end{itemcert}

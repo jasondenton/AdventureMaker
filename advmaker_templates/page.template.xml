@@ -1,0 +1,42 @@
+<id-{{"%05d" % id}}>
+		<locked type="number">1</locked>
+		<name type="string">{{name}}</name>
+		<text type="formattedtext">
+			{% if prelinks %}
+			<linklist>
+				{% for link in prelinks %}
+				<link class="{{link.type}}" recordname="{{link.recordtype}}.id-{{"%05d" % link.id}}">{{link.text}}</link>
+				{% endfor %}
+			</linklist>
+			{% endif %}
+
+			{{text}}
+			{% if links %}
+			<linklist>
+				{% for link in links %}
+				<link class="{{link.type}}" recordname="{{link.recordtype}}.id-{{"%05d" % link.id}}">{{link.text}}</link>
+				{% endfor %}
+			</linklist>
+			{% endif %}
+			{% if references %}
+			<!--<h>Referenced Pages</h>
+			<linklist>
+				{% for link in references %}
+				<link class="encounter" recordname="encounter.id-{{"%05d" % link.id}}">{{link.text}}</link>
+				{% endfor %}
+			</linklist>-->
+			{% endif %}
+
+			{% if next or prev %}
+			<h>Story Navigation</h>
+			<linklist>
+				{% if prev %}
+				<link class="encounter" recordname="encounter.id-{{"%05d" % prev}}">Previous Page</link>
+				{% endif %}
+				{% if next %}
+				<link class="encounter" recordname="encounter.id-{{"%05d" % next}}">Next Page</link>
+				{% endif %}
+			</linklist>
+			{% endif %}
+		</text>
+</id-{{"%05d" % id}}>

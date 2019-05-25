@@ -1,0 +1,6 @@
+<table>
+<tr><th>Tag</th><th>Title and Author</th></tr>
+{{#each @this}}
+<tr><td>{{tag}}</td><td>{{title}} by {{author}}</td></tr>
+{{/each}}
+</table>

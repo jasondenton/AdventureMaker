@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<root version="3.1" release="7|CoreRPG:3">
+	<battle>
+		<category name="" mergeid="{%if variables.code %}{{variables.code}} - {%endif%}{{variables.title}}" baseicon="5" decalicon="0">
+		{% for b in battles %}
+			{{ b | usetemplate('battle') }}
+		{% endfor %}
+		</category>
+	</battle>
+	<encounter>
+		<category name="" mergeid="{%if variables.code %}{{variables.code}} - {%endif%}{{variables.title}}" baseicon="5" decalicon="0">
+		<id-00001>
+				<locked type="number">1</locked>
+				<name type="string">0000. {%if variables.code %}{{variables.code}} - {%endif%}{{variables.title}}</name>
+				<text type="formattedtext">
+					{{pages[0].text}}
+					<p>An adventure for character levels {{variables.level}}</p>
+					<p><b>Code:</b> {{variables.code}}</p>
+					<linklist>
+						{% for link in pages[0].links %}
+						<link class="{{link.type}}" recordname="{{link.recordtype}}.id-{{"%05d" % link.id}}">{{link.text}}</link>
+						{% endfor %}
+					</linklist>
+					<p><b>Author:</b> {{variables.author}}</p>
+					<p><b>Editors:</b> {{variables.editors}}</p>
+					<p><b>Play Testing:</b> {{variables.playtesters}}</p>
+					<linklist>
+						<link class="encounter" recordname="encounter.id-00002">First Page</link>
+					</linklist>
+				</text>
+		</id-00001>
+		{% for page in pages[1:] %}
+			{{ page | usetemplate('page') }}
+		{% endfor %}
+		</category>
+	</encounter>
+	<npc>
+		<category name="" mergeid="{%if variables.code %}{{variables.code}} - {%endif%}{{variables.title}}" baseicon="5" decalicon="0">
+		{% for monster in monsters %}
+			{{ monster | usetemplate('monster') }}
+		{% endfor %}
+		</category>
+	</npc>
+	{% if treasure %}
+	<treasureparcels>
+		<category name="" mergeid="{%if variables.code %}{{variables.code}} - {%endif%}{{variables.title}}" baseicon="5" decalicon="0">
+			{% for t in treasure %}
+			<id-{{'%05d' % t.tid}}>
+				{% if t.cashgoods %}
+				<coinlist>
+					<id-00001>
+						<amount type="number">{{t.value}}</amount>
+						<description type="string">GP</description>
+					</id-00001>
+				</coinlist>
+				{% else %}
+				{% endif %}
+				<locked type="number">1</locked>
+				<name type="string">{{t.name}}</name>
+			</id-{{'%05d' % t.tid}}>
+			{% endfor %}
+		</category>
+	</treasureparcels>
+	{% endif %}
+
+	{% if founditems %}
+	<item>
+		<category name="" mergeid="{%if variables.code %}{{variables.code}} - {%endif%}{{variables.title}}" baseicon="5" decalicon="0">
+		{% for t in founditems %}
+		<id-{{'%05d' % t.tid}}>
+			{% if t.variables.ac %}<ac type="number">{{t.variables.ac}}</ac>{% endif %}
+			{% if t.variables.plus %}<bonus type="number">{{t.variables.plus}}</bonus>{% endif %}
+			<cost type="string">{{t.cashvalue}}</cost>
+			<description type="formattedtext">
+				{{t.body}}
+
+                {% if t.consumable or t.attunement%}
+                <p><b>
+                        {% if t.consumable %}
+                        Consumable
+                        {% endif %}
+                        {%if t.attunement %}
+                        Requires attunement {%if t.attuneby %} by {{t.attuneby}} {% endif %}
+                        {% endif %}
+                </b></p>
+                {% endif %}
+			</description>
+			<locked type="number">1</locked>
+			<name type="string">{{t.name}}</name>
+			<nonid_name type="string">{{t.name}}</nonid_name>
+			<nonidentified type="string">{{t.body2}}</nonidentified>
+			<rarity type="string">{{t.rarity}}</rarity>
+			{% if t.fg_subtype %}<subtype type="string">{{t.fg_subtype}}</subtype>{% endif %}
+			<type type="string">{{t.fg_type}}</type>
+			{% if t.variables.damage %}<damage type="string">{{t.variables.damage}}</damage>{% endif %}
+			{% if t.variables.weight %}<weight type="number">{{t.variables.weight}}</weight>{% endif %}
+		</id-{{'%05d' % t.tid}}>
+		{% endfor %}
+		</category>
+	</item>
+
+	{% endif %}
+	{% if images %}
+	<image>
+		<category name="" mergeid="{%if variables.code %}{{variables.code}} - {%endif%}{{variables.title}}" baseicon="5" decalicon="0">
+			{% for image in images %}
+			<id-{{'%05d' % image.id}}>
+				<image type="image">
+					<bitmap>{{image.filename}}</bitmap>
+					<gridsize>{% if image.needgrid %}50{%else%}0{%endif%}</gridsize>
+					<gridoffset>0,0</gridoffset>
+					<tokens>
+						<scalelock>1</scalelock>
+					</tokens>
+				</image>
+				<name type="string">{{image.name}}</name>
+			</id-{{'%05d' % image.id}}>
+			{% endfor %}
+		</category>
+	</image>
+	{% endif %}
+	{% if quests %}
+	<quest>
+		{% for q in quests %}
+		<id-{{'%05d' % loop.index}}>
+			<description type="formattedtext">
+				<p>{{q.0}}</p>
+			</description>
+			<name type="string">{{q.0}}</name>
+			<xp type="number">{{q.1}}</xp>
+		</id-{{'%05d' % loop.index}}>
+		{% endfor %}
+	</quest>
+	{% endif %}
+	<library>
+		<{{variables.fglabel}} static="true">
+		<categoryname>Adventures League</categoryname>
+			<name type="string">{{variables.fglabel}}</name>
+			<entries>
+				<id-00002>
+					<librarylink type="windowreference">
+						<class>referenceindex</class>
+						<recordname>lists.encounter@{%if variables.code %}{{variables.code}} - {%endif%}{{variables.title}}</recordname>
+					</librarylink>
+					<name type="string">Story</name>
+				</id-00002>
+				<id-00003>
+					<librarylink type="windowreference">
+						<class>referenceindex</class>
+						<recordname>lists.appendix@{%if variables.code %}{{variables.code}} - {%endif%}{{variables.title}}</recordname>
+					</librarylink>
+					<name type="string">Appendicies</name>
+				</id-00003>
+				<id-00004>
+					<librarylink type="windowreference">
+						<class>referenceindexsorted</class>
+						<recordname>lists.imagewindow@{%if variables.code %}{{variables.code}} - {%endif%}{{variables.title}}</recordname>
+					</librarylink>
+					<name type="string">Maps and Images</name>
+				</id-00004>
+				<id-00005>
+					<librarylink type="windowreference">
+						<class>referenceindexsorted</class>
+						<recordname>lists.npc@{%if variables.code %}{{variables.code}} - {%endif%}{{variables.title}}</recordname>
+					</librarylink>
+					<name type="string">Monsters</name>
+				</id-00005>
+				{% if quests %}
+				<id-00006>
+					<librarylink type="windowreference">
+						<class>referenceindexsorted</class>
+						<recordname>lists.quest@{%if variables.code %}{{variables.code}} - {%endif%}{{variables.title}}</recordname>
+					</librarylink>
+					<name type="string">Non-Combat XP Awards</name>
+				</id-00006>
+				{% endif %}
+				{% if treasure %}
+				<id-00007>
+					<librarylink type="windowreference">
+						<class>referenceindex</class>
+						<recordname>lists.treasureparcel@{%if variables.code %}{{variables.code}} - {%endif%}{{variables.title}}</recordname>
+					</librarylink>
+					<name type="string">Treasure (Gold)</name>
+				</id-00007>
+				{% endif %}
+				{% if founditems %}
+				<id-00008>
+					<librarylink type="windowreference">
+						<class>referenceindex</class>
+						<recordname>lists.item@{%if variables.code %}{{variables.code}} - {%endif%}{{variables.title}}</recordname>
+					</librarylink>
+					<name type="string">Treasure (Found Items)</name>
+				</id-00008>
+				{% endif %}
+				{% if storyaward_pages %}
+				<id-00009>
+					<librarylink type="windowreference">
+						<class>referenceindex</class>
+						<recordname>lists.storyaward@{%if variables.code %}{{variables.code}} - {%endif%}{{variables.title}}</recordname>
+					</librarylink>
+					<name type="string">Story Awards</name>
+				</id-00009>
+				{% endif %}
+
+			</entries>
+		</{{variables.fglabel}}>
+	</library>
+	<lists>
+		<encounter>
+			<name type="string">Story</name>
+			<index>
+				{% for page in story_pages %}
+				<id-{{'%05d' % page.id}}>
+						<listlink type="windowreference">
+							<class>encounter</class>
+							<recordname>encounter.id-{{'%05d' % page.id}}@{%if variables.code %}{{variables.code}} - {%endif%}{{variables.title}}</recordname>
+						</listlink>
+						<name type="string">{{page.name}}</name>
+				</id-{{'%05d' % page.id}}>
+				{% endfor %}
+			</index>
+		</encounter>
+		<appendix>
+			<name type="string">Appendices</name>
+			<index>
+				{% for page in app_pages %}
+				<id-{{'%05d' % page.id}}>
+						<listlink type="windowreference">
+							<class>encounter</class>
+							<recordname>encounter.id-{{'%05d' % page.id}}@{%if variables.code %}{{variables.code}} - {%endif%}{{variables.title}}</recordname>
+						</listlink>
+						<name type="string">{{page.name}}</name>
+				</id-{{'%05d' % page.id}}>
+				{% endfor %}
+			</index>
+		</appendix>
+		{%if treasure %}
+		<treasureparcel>
+			<name type="string">Treasure (Gold)</name>
+			<index>
+				{% for loot in treasure %}
+				<id-{{'%05d' % loot.tid}}>
+						<listlink type="windowreference">
+							<class>treasureparcel</class>
+							<recordname>treasureparcels.id-{{'%05d' % loot.tid}}@{%if variables.code %}{{variables.code}} - {%endif%}{{variables.title}}</recordname>
+						</listlink>
+						<name type="string">{{loot.name}}</name>
+				</id-{{'%05d' % loot.tid}}>
+				{% endfor %}
+			</index>
+		</treasureparcel>
+		{% endif %}
+		{% if founditems %}
+		<item>
+			<name type="string">Treasure (Items)</name>
+			<index>
+				{% for loot in founditems %}
+				<id-{{'%05d' % loot.tid}}>
+						<listlink type="windowreference">
+							<class>item</class>
+							<recordname>item.id-{{'%05d' % loot.tid}}@{%if variables.code %}{{variables.code}} - {%endif%}{{variables.title}}</recordname>
+						</listlink>
+						<name type="string">{{loot.name}}</name>
+				</id-{{'%05d' % loot.tid}}>
+				{% endfor %}
+			</index>
+		</item>
+		{% endif %}
+		{% if storyaward_pages %}
+		<storyaward>
+			<name type="string">Story Awards</name>
+			<index>
+				{% for page in storyaward_pages %}
+				<id-{{'%05d' % page.id}}>
+						<listlink type="windowreference">
+							<class>encounter</class>
+							<recordname>encounter.id-{{'%05d' % page.id}}@{%if variables.code %}{{variables.code}} - {%endif%}{{variables.title}}</recordname>
+						</listlink>
+						<name type="string">{{page.name}}</name>
+				</id-{{'%05d' % page.id}}>
+				{% endfor %}
+			</index>
+		</storyaward>
+		{% endif %}
+		<npc>
+			<name type="string">Monsters</name>
+			<index>
+				{% for monster in monsters %}
+				<id-{{'%05d' % monster.mid}}>
+						<listlink type="windowreference">
+							<class>npc</class>
+							<recordname>npc.id-{{'%05d' % monster.mid}}@{%if variables.code %}{{variables.code}} - {%endif%}{{variables.title}}</recordname>
+						</listlink>
+						<name type="string">{{monster.name}}</name>
+				</id-{{'%05d' % monster.mid}}>
+				{% endfor %}
+			</index>
+		</npc>
+		<imagewindow>
+			<name type="string">Maps and Images</name>
+			<index>
+				{% for image in images %}
+				<id-{{'%05d' % image.id}}>
+						<listlink type="windowreference">
+							<class>imagewindow</class>
+							<recordname>image.id-{{'%05d' % image.id}}@{%if variables.code %}{{variables.code}} - {%endif%}{{variables.title}}</recordname>
+						</listlink>
+						<name type="string">{{image.name}}</name>
+				</id-{{'%05d' % image.id}}>
+				{% endfor %}
+			</index>
+		</imagewindow>
+		{% if quests %}
+		<quest>
+			<name type="string">Non-Combat XP</name>
+			<index>
+				{% for q in quests %}
+					<id-{{'%05d' % loop.index}}>
+						<listlink type="windowreference">
+							<class>quest</class>
+							<recordname>quest.id-{{'%05d' % loop.index}}@{%if variables.code %}{{variables.code}} - {%endif%}{{variables.title}}</recordname>
+						</listlink>
+						<name type="string">{{q.0}}</name>	
+					</id-{{'%05d' % loop.index}}>
+				{% endfor %}
+			</index>
+		</quest>
+		{% endif %}
+	</lists>
+</root>

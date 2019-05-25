@@ -1,0 +1,43 @@
+\documentclass[landscape, 10pt]{article}
+\usepackage{multicol}
+\usepackage[landscape]{geometry}
+\newgeometry{right=0.4in, left=0.4in,top=0.75in, bottom=0.75in}
+\usepackage{indentfirst}
+\usepackage[english]{babel}
+\usepackage[pdftex]{hyperref}
+\usepackage{dnd}
+\hypersetup{
+    pdfcreator={pdflatex},
+    pdfauthor={/@ variables.author @/},
+    pdftitle={/@ variables.title @/},
+    pdfsubject={Dungeons and Dragons},
+    pdfkeywords={Dungeons and Dragons, D\&D, 5e, adventure},
+    bookmarks=true,
+    linkcolor=blue,
+    urlcolor=blue,
+    citecolor=black,
+    colorlinks=true,
+}
+\begin{document}
+\pagenumbering{gobble}
+\begin{multicols}{3}
+
+/$ for st in storyawards $/ 
+\begin{storyaward}{/@st.variables.code@/}{/@st.name@/}
+/$ if st.variables.long $/ \small /$ endif $/
+\indent /@st.body@/
+\end{storyaward}
+\columnbreak
+\begin{storyaward}{/@st.variables.code@/}{/@st.name@/}
+/$ if st.variables.long $/ \small /$ endif $/
+\indent /@st.body@/
+\end{storyaward}
+\columnbreak
+\begin{storyaward}{/@st.variables.code@/}{/@st.name@/}
+/$ if st.variables.long $/ \small /$ endif $/
+\indent /@st.body@/
+\end{storyaward}
+\pagebreak
+/$ endfor $/
+\end{multicols}
+\end{document}

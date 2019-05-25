@@ -1,0 +1,80 @@
+\documentclass[12pt,openany]{book}
+\usepackage{dnd}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{indentfirst}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage[T1]{fontenc}
+\usepackage[pdftex]{hyperref}
+\usepackage{bookmark}
+\usepackage{makecell}
+\usepackage{graphicx}
+\usepackage{easyfig}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg,.jpeg}
+\hypersetup{
+	pdfcreator={pdflatex},
+	pdfauthor={/@ variables.author @/},
+    pdftitle={/@ variables.title @/},
+    pdfsubject={Dungeons and Dragons},
+    pdfkeywords={Proof},
+    bookmarks=true,
+    linkcolor=blue,
+    urlcolor=blue,
+    citecolor=black,
+    colorlinks=true,
+}
+
+\usepackage{fullpage}
+\renewcommand{\baselinestretch}{1.5}
+\begin{document}
+%\fontfamily{\familydefault}\selectfont
+
+\centerline{\scshape\Huge /@variables.title@/}
+
+/@ blurb @/
+
+\noindent {\scshape\Large Credits}
+
+/$ if variables.author $/ \noindent \textbf{Author}: /@variables.author@/ \par /$endif$/
+/$ if variables.artists $/ \noindent \textbf{Art Work}: /@variables.artists@/ \par /$endif$/
+/$ if variables.editors $/ \noindent \textbf{Editing Assistance}: /@variables.editors @/ \par /$endif$/
+/$ if variables.playtesters $/\noindent \textbf{Playtesters}: /@ variables.playtesters @/ \par /$ endif $/
+\noindent \textbf{Last Revised:} \today
+\vspace*{0.35in}
+/$ if splices.credits $/
+/@splices.credits.body@/
+\vspace*{0.35in}
+/$ endif $/
+
+
+/$ if splices.preliminaries $/
+{\textbf Following text appears on the preliminaries page, after the standard broiler plate and 
+before the start of the adventure.}
+
+/@splices.preliminaries.body@/
+
+\textbf{End of preliminary material.}
+/$ endif $/
+
+/$ for chp in chapters $/
+
+\chapter{/@chp.name@/}
+\label{chapter_/@chp.label@/}
+
+/@ chp.body @/
+
+/$ for enc in encounters $/
+\encounter{Encounter: /@enc.name@/}
+\label{enc_/@enc.label@/}
+
+/@enc.body@/
+
+
+/$ for sbar in enc.sidebars $/
+/@ sbar | usetemplate('sidebar') @/
+/$ endfor $/
+
+/$ endfor $/
+/$ endfor $/
+\end{document}

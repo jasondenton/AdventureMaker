@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<root version="3.1" release="7|CoreRPG:3">
+	<battle>
+		<category name="" mergeid="{%if variables.code %}{{variables.code}} - {%endif%}{{variables.title}}" baseicon="5" decalicon="0">
+		{% for b in battles %}
+			{{ b | usetemplate('battle') }}
+		{% endfor %}
+		</category>
+	</battle>
+	<encounter>
+		<category name="" mergeid="{%if variables.code %}{{variables.code}} - {%endif%}{{variables.title}}" baseicon="5" decalicon="0">
+		<id-00001>
+				<locked type="number">1</locked>
+				<name type="string">{%if variables.code %}{{variables.code}} - {%endif%}{{variables.title}}</name>
+				<text type="formattedtext">
+					{{pages[0].text}}
+					<p>An adventure for character levels {{variables.level}}</p>
+					<p><b>Code:</b> {{variables.code}}</p>
+					<linklist>
+						{% for link in pages[0].links %}
+						<link class="{{link.type}}" recordname="{{link.recordtype}}.id-{{"%05d" % link.id}}">{{link.text}}</link>
+						{% endfor %}
+					</linklist>
+					<p><b>Author:</b> {{variables.author}}</p>
+					<p><b>Editors:</b> {{variables.editors}}</p>
+					<p><b>Play Testing:</b> {{variables.playtesters}}</p>
+					<linklist>
+						<link class="encounter" recordname="encounter.id-00002">First Page</link>
+					</linklist>
+				</text>
+		</id-00001>
+		{% for page in pages[1:] %}
+			{{ page | usetemplate('page') }}
+		{% endfor %}
+		</category>
+	</encounter>
+	<manual>
+		<chapters>
+			<chapter_00>
+					<name type="string">{%if variables.code %}{{variables.code}} - {%endif%}{{variables.title}}</name>
+					<subchapters>
+						<subchapter_01>
+							<name type="string">Cover</name>
+							<refpages>
+								<refpage_00>
+									<listlink type="windowreference">
+										<class>reference_manualtextwide</class>
+										<recordname>..</recordname>
+									</listlink>
+									<name type="string">Cover Image</name>
+									<blocks>
+										<block_00>
+											<blocktype type="string">image</blocktype>
+											<size type="string">504,650</size>
+											<image type="image">
+												<bitmap>{{variables.coverimage}}</bitmap>
+											</image>
+											<imagelink type="windowreference">
+												<class>imagewindow</class>
+												<recordname>image.id-00001</recordname>
+											</imagelink>
+										</block_00>
+									</blocks>
+								</refpage_00>
+							</refpages>
+						</subchapter_01>
+					</subchapters>
+				</chapter_00>
+			</chapters>
+		</manual>
+	<npc>
+		<category name="" mergeid="{%if variables.code %}{{variables.code}} - {%endif%}{{variables.title}}" baseicon="5" decalicon="0">
+		{% for monster in monsters %}
+			{{ monster | usetemplate('monster') }}
+		{% endfor %}
+		</category>
+	</npc>
+	{% if treasure %}
+	<treasureparcels>
+		<category name="" mergeid="{%if variables.code %}{{variables.code}} - {%endif%}{{variables.title}}" baseicon="5" decalicon="0">
+			{% for t in treasure %}
+			<id-{{'%05d' % t.tid}}>
+				{% if t.cashgoods %}
+				<coinlist>
+					<id-00001>
+						<amount type="number">{{t.value}}</amount>
+						<description type="string">GP</description>
+					</id-00001>
+				</coinlist>
+				{% else %}
+				<itemlist>
+					<id-00001>
+						<cost type="sting">Not For Sale</cost>
+						<description type="formattedtext">
+							<h>Description</h>
+							
+							{% if t.consumable or t.attunement%}
+							<p></b>
+								{% if t.consumable %}
+								Consumable
+								{% endif %}
+								{%if t.attunement %}
+								Requires attunement {%if t.attuneby %} by {{t.attuneby}} {% endif %}
+								{% endif %}
+							</b?</p>
+							{% endif %}
+
+							{{t.desc}}
+						</description>
+						<isidentified type="number">1</isidentified>
+						<istemplate type="number">1</istemplate>
+						<locked type="number">1</locked>
+						<name type="string">{{t.name}}</name>
+						<rarity type="string">{{t.rarity}}</rarity>
+						<type type="string">{{t.type}}</type>
+					</id-00001>
+				</itemlist>
+				{% endif %}
+				<locked type="number">1</locked>
+				<name type="string">{{t.name}}</name>
+			</id-{{'%05d' % t.tid}}>
+			{% endfor %}
+		</category>
+	</treasureparcels>
+	{% endif %}
+	{% if images %}
+	<image>
+		<category name="" mergeid="{%if variables.code %}{{variables.code}} - {%endif%}{{variables.title}}" baseicon="5" decalicon="0">
+			{% for image in images %}
+			<id-{{'%05d' % image.id}}>
+				<image type="image">
+					<bitmap>{{image.filename}}</bitmap>
+					<gridsize>{% if image.needgrid %}50{%else%}0{%endif%}</gridsize>
+					<gridoffset>0,0</gridoffset>
+					<tokens>
+						<scalelock>1</scalelock>
+					</tokens>
+				</image>
+				<name type="string">{{image.name}}</name>
+			</id-{{'%05d' % image.id}}>
+			{% endfor %}
+		</category>
+	</image>
+	{% endif %}
+	<library>
+		<{{variables.fglabel}} static="true">
+			<categoryname type="string">Adventurers League</categoryname>
+			<name type="string">{{variables.fglabel}}</name>
+			<entries>
+				<encounter>
+					<librarylink type="windowreference">
+						<class>referenceindex</class>
+						<recordname>lists.encounter@{%if variables.code %}{{variables.code}} - {%endif%}{{variables.title}}</recordname>
+					</librarylink>
+					<name type="string">1. Story</name>
+				</encounter>
+				<treasureparcel>
+					<librarylink type="windowreference">
+						<class>referenceindex</class>
+						<recordname>lists.treasureparcel@{%if variables.code %}{{variables.code}} - {%endif%}{{variables.title}}</recordname>
+					</librarylink>
+					<name type="string">4. Treasure</name>
+				</treasureparcel>
+				<npc>
+					<librarylink type="windowreference">
+						<class>referenceindexsorted</class>
+						<recordname>lists.npc@{%if variables.code %}{{variables.code}} - {%endif%}{{variables.title}}</recordname>
+					</librarylink>
+					<name type="string">3. Monsters</name>
+				</npc>
+				<imagewindow>
+					<librarylink type="windowreference">
+						<class>referenceindexsorted</class>
+						<recordname>lists.imagewindow@{%if variables.code %}{{variables.code}} - {%endif%}{{variables.title}}</recordname>
+					</librarylink>
+					<name type="string">2. Maps and Images</name>
+				</imagewindow>
+			</entries>
+		</{{variables.fglabel}}>
+	</library>
+	<lists>
+		<encounter>
+			<name type="string">Story</name>
+			<index>
+				{% for page in story_pages %}
+				<id-{{'%05d' % page.id}}>
+						<listlink type="windowreference">
+							<class>encounter</class>
+							<recordname>encounter.id-{{'%05d' % page.id}}@{%if variables.code %}{{variables.code}} - {%endif%}{{variables.title}}</recordname>
+						</listlink>
+						<name type="string">{{page.name}}</name>
+				</id-{{'%05d' % page.id}}>
+				{% endfor %}
+			</index>
+		</encounter>
+		<treasureparcel>
+			<name type="string">Parcels</name>
+			<index>
+				{% for loot in treasure %}
+				<id-{{'%05d' % loot.tid}}>
+						<listlink type="windowreference">
+							<class>treasureparcel</class>
+							<recordname>treasureparcels.id-{{'%05d' % loot.tid}}@{%if variables.code %}{{variables.code}} - {%endif%}{{variables.title}}</recordname>
+						</listlink>
+						<name type="string">{{loot.name}}</name>
+				</id-{{'%05d' % loot.tid}}>
+				{% endfor %}
+			</index>
+		</treasureparcel>
+		<npc>
+			<name type="string">Monsters</name>
+			<index>
+				{% for monster in monsters %}
+				<id-{{'%05d' % monster.mid}}>
+						<listlink type="windowreference">
+							<class>npc</class>
+							<recordname>npc.id-{{'%05d' % monster.mid}}@{%if variables.code %}{{variables.code}} - {%endif%}{{variables.title}}</recordname>
+						</listlink>
+						<name type="string">{{monster.name}}</name>
+				</id-{{'%05d' % monster.mid}}>
+				{% endfor %}
+			</index>
+		</npc>
+		<imagewindow>
+			<name type="string">Maps and Images</name>
+			<index>
+				{% for image in images %}
+				<id-{{'%05d' % image.id}}>
+						<listlink type="windowreference">
+							<class>imagewindow</class>
+							<recordname>image.id-{{'%05d' % image.id}}@{%if variables.code %}{{variables.code}} - {%endif%}{{variables.title}}</recordname>
+						</listlink>
+						<name type="string">{{image.name}}</name>
+				</id-{{'%05d' % image.id}}>
+				{% endfor %}
+			</index>
+		</imagewindow>
+	</lists>
+</root>
+

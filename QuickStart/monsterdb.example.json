@@ -1,0 +1,123 @@
+{
+    "Elite Kobold": {
+        "actions": [
+            {
+                "desc": "/i/Melee Weapon Attack:/i/ +4 to hit, reach 5 ft., one target. /i/Hit:/i/ 4 (1d4 + 2) piercing damage.", 
+                "name": "Dagger"
+            }, 
+            {
+                "desc": "/i/Ranged Weapon Attack:/i/ +4 to hit, range 30/120 ft., one target. /i/Hit:/i/ 4 (1d4 + 2) bludgeoning damage.", 
+                "name": "Sling"
+            }
+        ], 
+        "alignment": "lawful evil", 
+        "armor_class": 12, 
+        "armor_type" : "none",
+        "challenge_rating": "1/8", 
+        "charisma": 8, 
+        "condition_immunities": "", 
+        "constitution": 11, 
+        "damage_immunities": "", 
+        "damage_resistances": "", 
+        "damage_vulnerabilities": "", 
+        "dexterity": 15, 
+        "expertise": [], 
+        "hit_dice_num": 2, 
+        "hit_dice_size": 6, 
+        "intelligence": 8, 
+        "languages": "Common, Draconic", 
+        "name": "Elite Kobold", 
+        "saves": [], 
+        "senses": "darkvision 60 ft., passive Perception 8", 
+        "size": "Small", 
+        "skills": [], 
+        "source": "srd", 
+        "special_abilities": [
+            {
+                "desc": "While in sunlight, the kobold has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight.", 
+                "name": "Sunlight Sensitivity"
+            }, 
+            {
+                "desc": "The kobold has advantage on an attack roll against a creature if at least one of the kobold's allies is within 5 ft. of the creature and the ally isn't incapacitated.", 
+                "name": "Pack Tactics"
+            }
+        ], 
+        "speed": "30 ft.", 
+        "strength": 7, 
+        "subtype": "kobold", 
+        "type": "humanoid", 
+        "wisdom": 7
+    },
+    "Black Knight": {
+        "actions": [
+            {
+                "desc": "The knight makes two melee attacks.", 
+                "name": "Multiattack"
+            }, 
+            {
+                "desc": "/i/Melee Weapon Attack:/i/ +5 to hit, reach 5 ft., one target. /i/Hit:/i/ 10 (2d6 + 3) slashing damage.", 
+                "name": "Greatsword"
+            }, 
+            {
+                "desc": "/i/Ranged Weapon Attack:/i/ +2 to hit, range 100/400 ft., one target. /i/Hit:/i/ 5 (1d10) piercing damage.", 
+                "name": "Heavy Crossbow"
+            }, 
+            {
+                "desc": "For 1 minute, the knight can utter a special command or warning whenever a nonhostile creature that it can see within 30 ft. of it makes an attack roll or a saving throw. The creature can add a d4 to its roll provided it can hear and understand the knight. A creature can benefit from only one Leadership die at a time. This effect ends if the knight is incapacitated.", 
+                "name": "Leadership (Recharges after a Short or Long Rest)"
+            }
+        ], 
+        "alignment": "any alignment", 
+        "armor_class": 18, 
+        "armor_type": "plate", 
+        "challenge_rating": "3", 
+        "charisma": 15, 
+        "condition_immunities": "", 
+        "constitution": 14, 
+        "damage_immunities": "", 
+        "damage_resistances": "", 
+        "damage_vulnerabilities": "", 
+        "dexterity": 11, 
+        "expertise": [], 
+        "hit_dice_num": 8, 
+        "hit_dice_size": 8, 
+        "intelligence": 11, 
+        "languages": "any one language (usually Common)", 
+        "name": "Black Knight", 
+        "reactions": [
+            {
+                "desc": "The knight adds 2 to its AC against one melee attack that would hit it. To do so, the knight must see the attacker and be wielding a melee weapon.", 
+                "name": "Parry"
+            }
+        ], 
+        "legendary_actions": [
+            {
+                "desc": "The knight regains his reaction.",
+                "name" : "Onguard"
+            },
+            {
+                "desc": "The knight make one melee attack.",
+                "name": "Have at Thee"
+            }
+        ],
+        "saves": [
+            "constitution", 
+            "wisdom"
+        ], 
+        "senses": "", 
+        "size": "Medium", 
+        "skills": [], 
+        "source": "srd", 
+        "special_abilities": [
+            {
+                "desc": "The knight has advantage on saving throws against being frightened.", 
+                "name": "Brave"
+            }
+        ], 
+        "speed": "30 ft.", 
+        "strength": 16, 
+        "subtype": "any race", 
+        "type": "humanoid", 
+        "wisdom": 11
+    }
+}

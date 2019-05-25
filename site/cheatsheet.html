@@ -1,0 +1,283 @@
+<!doctype html>
+<html>
+<head>
+	<link rel="stylesheet" href="advmaker.css" media="screen"/>
+	<title>AdventureMaker Cheat Sheet</title>
+	<style>
+		td {
+	    	text-align: left;
+		}	
+
+		.example {
+			background-color: lightgray;
+		}
+	</style>
+
+</head>
+
+<body>
+<div class="main">
+<h1>AdventureMaker Cheat Sheet</h1>
+
+<h2>Preamble</h2>
+<table>
+<tr>
+	<th>Variable</th>
+	<th>Purpose</th>
+	<th>Presence</th>
+</tr><tr>
+	<td>@title</td>
+	<td>The name of the adventure</td>
+	<td>Mandatory</td>
+</tr><tr>
+	<td>@code</td>
+	<td>The code for the adventure, should start with CCC-.</td>
+	<td>Mandatory</td>
+</tr><tr>
+	<td>@author</td>
+	<td>The primary author or authors of the adventure.</td>
+	<td>Mandatory</td>
+</tr><tr>
+	<td>@convention</td>
+	<td>The convention where the adventure first appeared.</td>
+	<td>Mandatory</td>
+</tr><tr>
+	<td>@year</td>
+	<td>The year the adventure appeared. Also used for the copyright year.</td>
+	<td>Mandatory</td>
+</tr><tr>
+	<td>@tier</td>
+	<td>The tier of the adventure. Must be a number from 1 to 4.</td>
+	<td>Mandatory</td>
+</tr><tr>
+	<td>@playtime</td>
+	<td>The number of hours the adventure is expected to take. Should be 2, 4, or 8.</td>
+	<td>Mandatory</td>
+</tr><tr>
+	<td>@coverimage</td>
+	<td>Name of the file containing the cover art.</td>
+	<td>Optional</td>
+</tr><tr>
+	<td>@editors</td>
+	<td>List of people receiving editorial credit for the adventure.</td>
+	<td>Optional</td>
+</tr><tr>
+	<td>@artists</td>
+	<td>List of people receiving credit for the art in the adventure.</td>
+	<td>Optional</td>
+</tr><tr>
+	<td>@playtesters</td>
+	<td>List of people receiving play test credit for the adventure.</td>
+	<td>Optional</td>
+</tr><tr>
+	<td>@nodivxp</td>
+	<td>Instructs AdventureMaker to not include the table XP by Party Size in the summary. To use set the value as 1.</td>
+	<td>Optional</td>
+</tr><tr>
+	<td>@nodivgp</td>
+	<td>Instructs AdventureMaker to not include the table Treasure by Party Size in the summary. To use set the value as 1.</td>
+	<td>Optional</td>
+</tr><tr>
+	<td>@minxp</td>
+	<td>Overrides the minimum XP calculation done by AdventureMaker with the provided value. Must by a number.</td>
+	<td>Discouraged</td>
+</tr><tr>
+	<td>@maxxp</td>
+	<td>Overrides the maximum XP calculation done by AdventureMaker with the provided value. Must by a number.</td>
+	<td>Discouraged</td>
+</tr>
+</table>
+
+<h2>Text</h2>
+<p><div class="example"><pre>
+/b/This text is in bold/b/, and /i/this text is in italics/i/.
+The page is 8.5/inch/ wide. "That's what the dragon said".
+</pre></div></p>
+
+<h2>Encounters</h2>
+
+<p><div class="example"><pre>
+!encounter Raid on the Orc War Camp
+- weak: 2 Orc, Orc War Chief
+- normal: 3 Orc, Orog, Orc War Chief
+- strong: 3 Orc, Orog, Orc War Chief, Orc Eye of Gruumsh
+- noxp: Kobold, Goblin
+- map: orc_base.jpeg
+- order: Orc, Orc War Chief, !Orc Eye of Gruumush, Orog
+
+@colmap 1 		//if the map can fit in one column
+@noskippage 1	//do not force encounter to start on an odd numbered page
+@mapatend 1		//map after stat blocks instead of before
+
+** Setup
+A few notes about setting up the map.
+
+!end 
+</pre></div></p>
+
+<h2>Monsters</h2>
+<p><div class="example"><pre>
+!monster Pit Fiend
+!namedmonster Klauth/Ancient Red Dragon
+!skinmonster Bony Man/Skeleton
+</pre></div></p>
+
+<h2>Magic Items</h2>
+<p><div class="example"><pre>
+- item: Potion of Healing
+@available 3
+@nocert 1
+!end
+</pre></div></p>
+
+<p><div class="example"><pre>
+!magicitem Magic Sword
+- item: Weapon
+- plus: 2
+- type: Long Sword
+
+@image magicsword.jpeg
+
+This finely made blade is superbly balanced and razor sharp. It emits a very 
+faint blue glow, just barley visible when it is unsheathed in the dark.
+!end
+</pre></div></p>
+
+<h2>Story Awards</h2>
+<p><div class="example"><pre>
+!storyaway Saved the Dragon
+@code DRG01
+The party earns this reward if they saved the Dragon and prevented
+him from being eaten by the princess.
+- playertext:
+Your quick thinking and heroic actions have saved the dragon Borchor from being
+devoured by the Tin Princess. He has promised that one day he will repay the favor.
+Just not with treasure from his hoard. He's keeping that.
+!end
+</pre></div></p>
+
+<h2>Spell books</h2>
+<p><div class="example"><pre>
+!spellbook Necromancers Spell book
+- spells: Animate Dead, Create Undead, Blight, Circle of Death
+
+This foul book is bound in human skin and inked in blood.
+!end
+</pre></div></p>
+
+<h2>Splices</h2>
+<p><div class="example"><pre>
+!splice credits
+Additional credits.
+!end
+
+!splice preliminaries
+Add something after the preliminaries.
+!end
+
+!splice advleague_rewards
+Additional downtime and renown awards.
+!end
+
+!splice notable_items
+Add something to the notable items section of the adventure summary.
+!end
+</pre></div></p>
+
+<h2>Treasure</h2>
+<p><div class="example"><pre>
+When the characters loot the [[loot: goblin's chest : they find : 135]].
+The chest also contains a nicely made suit of [[mundane: chain mail]].
+For successfully completing the mission the characters will be paid 100 gp.
+[[noshowloot: Payment for killing goblins : 100]]
+</pre></div></p>
+
+<h2>Artwork</h2>
+<p><div class="example"><pre>
+!appendiximage Player Handout 1 - Dungeon Map: dungeon_map.jpeg
+
+[[imagehere: pretty.png]]
+</pre></div></p>
+
+<h2>Experince</h2>
+<p><div class="example"><pre>
+[[xp: Some Quest: 500]]
+</pre></div></p>
+
+<h2>Tables</h2>
+<p><div class="example"><pre>
+|||Random City Encounters
+| d%|Encounter |
+| 1-40 | 1d6 members of the city watch |
+| 41-50 | 2 orphans, begging for coins |
+| 51-65 | An aristocrat |
+| 66-80 | A body in the gutter |
+| 80-95 | A gang of pick pockets |
+| 95+ | 1d6 Thugs in a back alley |
+</pre></div></p>
+
+<h2>Lists</h2>
+<p><div class="example"><pre>
+-- If asked about the map Dorum will ramble on and
+on and on and on for a very long time. He will
+resist interruption and talk over questions, but
+without every actually saying anything.
+-- If asked about the girl Dorum just says "Nope".
+-- If asked about monsters Dorum will offer that there will
+likely by orcs, goblins, and harpies.
+</pre></div></p>
+
+<p><div class="example"><pre>
+To reach the Winter Castle the characters must do the following in order:
+-# Put their left hand in.
+-# Put their right hand in.
+-# Shake it all about.
+</pre></div></p>
+
+<h2>References</h2>
+<table class="reference">
+	<tr>
+		<th>Code</th>
+		<th>Link to</th>
+	</tr><tr>
+		<td>[[chapter: NAME]]</td>
+		<td>Chapter with the given name</td>
+	</tr><tr>
+		<td>[[appendix: NAME]]</td>
+		<td>An appendix with the given name</td>
+	</tr><tr>
+		<td>[[encounter: NAME]]</td>
+		<td>The encounter with the given name</td>
+	</tr><tr>
+		<td>[[magicitemref: NAME]]</td>
+		<td>The magic item with the given name</td>
+	</tr><tr>
+		<td>[[storyaward: NAME]]</td>
+		<td>The story award with the given name</td>
+	</tr><tr>
+		<td>[[NPC: TAG]]</td>
+		<td>Description for the named NPC</td>
+	</tr><tr>
+		<td>[[reference: NAME]]</td>
+		<td>The previously defined label</td>
+	</tr>
+</table>
+
+<h2>Non-Player Characters</h2>
+<p><div class="example"><pre>
+{
+	"Maxwell Truss" : {
+		"name" : "Maxwell Truss",
+		"title" : "Lighthouse Keeper",
+		"race" : "Human",
+		"gender" : "Male",
+		"description" : "Maxwell is stocky with a bushy beard.",
+		"quote" : "No tabs; cash up front.",
+		"stats" : "Commoner"
+	}
+}
+</pre></div></p>
+
+</div>
+</body>
+</html>

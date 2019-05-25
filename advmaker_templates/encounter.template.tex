@@ -1,0 +1,57 @@
+% start of /@name@/
+\clearpage
+/$ if not variables.noskippage $/
+\checkoddpage
+\ifoddpage
+\mbox{}
+\newpage
+\mbox{}
+\newpage
+\else
+\fi
+/$ endif $/
+\encounter{Encounter: /@name@/}
+\label{enc_/@label@/}
+
+\begin{center}
+\begin{tabularx}{\columnwidth}{rXr}
+/$ for diff in encounter_table $/
+\rowcolor[gray]{0.9} \multicolumn{3}{c}{{\textbf{/@ diff.difficulty @/ Party}}} \\
+/$ for r in diff.roster $/
+/@ r.number @/ & /@ r.name @/ & /@ r.xp @/ XP each\\/$ endfor $/ 
+\multicolumn{2}{l}{\textbf{Total XP}} & /@ diff.totalxp @/ XP\\
+/$ endfor $/
+\end{tabularx}
+\end{center}
+\vspace{8pt}
+/@body@/
+
+/$ if map and not variables.mapatend $/
+/$ if variables.colmap $/
+\Figure[placement=!h,max width=\columnwidth, max height=\textheight]{/@map@/}
+/$ else $/
+\clearpage
+\onecolumn
+\Figure*[placement=!h,max width=\textwidth, max height=\textheight]{/@map@/}
+\twocolumn
+\clearpage
+/$ endif $/
+/$ endif $/
+
+/$ for sblock in stat_blocks $/
+/@ sblock | usetemplate('monster') @/
+/$ endfor $/
+
+/$ for sbar in sidebars $/
+/@ sbar | usetemplate('sidebar') @/
+/$ endfor $/
+
+/$ if map and variables.mapatend $/
+\clearpage
+\onecolumn
+\Figure*[placement=!h,max width=\textwidth, max height=\textheight]{/@map@/}
+\twocolumn
+\clearpage
+/$ endif $/
+
+% end of encounter /@name@/

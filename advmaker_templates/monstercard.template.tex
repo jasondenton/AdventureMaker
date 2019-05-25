@@ -1,0 +1,93 @@
+\documentclass{article}
+\usepackage{dnd}
+\usepackage{fullpage}
+\usepackage[utf8]{inputenc}
+\usepackage[letterpaper]{geometry}
+\newgeometry{right=0.6in, top=0.75in, bottom=0.75in}
+\usepackage[english]{babel}
+\usepackage{indentfirst}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage[T1]{fontenc}
+\usepackage[pdftex]{hyperref}
+\usepackage{bookmark}
+\usepackage{makecell}
+\usepackage{graphicx}
+\usepackage{easyfig}
+
+\begin{document}
+
+/$ macro monsteraction(ability) $/
+\begin{monsteraction}[/@ ability.name @/]
+/@ ability.desc @/
+\end{monsteraction} 
+/$ endmacro $/
+
+/$ if large_block $/\clearpage/$ endif $/
+/$ if split_block $/\tcbset{width=\textwidth}/$ endif $/
+\begin{monster}{/$if alias $//@name@/(/@alias@/)/$else$//@name@//$endif$/}
+/$ if split_block $/\begin{multicols}{2}/$ endif $/
+\statblock[
+        armorclass={/@ armor_class @/}, 
+        /$ if armor_type $/ armortype={/@ armor_type @/}, 
+        /$ endif $/ hitpoints={/@ hit_points @/},
+        hitdice={/@hit_dice_num@/d/@hit_dice_size@//@hit_dice_bonus@/}, 
+        speed={/@ speed @/}, 
+        senses={/@ senses @/},
+        challenge=/@ challenge_rating @/,
+        /$ if damage_immunities $/ damageimmune={/@ damage_immunities @/}, 
+        /$ endif $//$ if damage_resistances $/damageresist={/@ damage_resistances @/}, 
+        /$ endif $//$ if damage_vulnerabilities $/damagevuln={/@ damage_vulnerabilities @/}, 
+        /$ endif $//$ if condition_immunities $/conditionimmune={/@ condition_immunities @/}, 
+        /$ endif $/alignment={/@ alignment @/}, 
+        type={/@ type @/}, 
+        /$ if subtype $/subtype={/@ subtype @/}, 
+        /$ endif $//$ if languages $/languages={/@ languages @/}, 
+        /$ endif $//$ if skills $/skills={/@ skills @/}, 
+        /$ endif $//$ if saves $/saves={/@ saves @/}, 
+        /$ endif $/size={/@ size @/},
+        xp={/@ xp @/},
+        pp={/@ passive_perception @/},
+        str={/@strength@/ (/@ "{:+d}".format(modifier.strength) @/)},
+        dex={/@dexterity@/ (/@ "{:+d}".format(modifier.dexterity) @/)},
+        con={/@constitution@/ (/@ "{:+d}".format(modifier.constitution) @/)},
+        int={/@intelligence@/ (/@ "{:+d}".format(modifier.intelligence) @/)},
+        wis={/@wisdom@/ (/@ "{:+d}".format(modifier.wisdom) @/)},
+        cha={/@charisma@/ (/@ "{:+d}".format(modifier.charisma) @/)}
+        ]        
+/$ for trait in traits $/
+/@ monsteraction(trait) @/
+/$ endfor $/
+/$ if actions $/
+\monstersection{Actions}
+/$ for ability in actions $/
+/@ monsteraction(ability) @/
+/$ endfor $/
+/$ endif $/
+/$ if bonus_actions $/
+\monstersection{Bonus Actions}
+/$ for ability in bonus_actions $/
+/@ monsteraction(ability) @/
+/$ endfor $/
+/$ endif $/
+/$ if reactions $/
+\monstersection{Reactions}
+/$ for ability in reactions $/
+/@ monsteraction(ability) @/
+/$ endfor $/
+/$ endif $/
+/$ if legendary_actions $/
+\monstersection{Legendary Actions}
+/@legtitle@/ can take {/@legendaries@/} legendary actions. They can take only one legendary action at a time and only at the end of 
+another creature's turn. /@legtitle@/ regains spent legendary actions at the start of its turn.
+
+/$ for ability in legendary_actions $/
+/@ monsteraction(ability) @/
+/$ endfor $/
+/$ endif $/
+/$ if split_block $/\end{multicols}/$ endif $/
+\end{monster}
+/$ if split_block $/\tcbset{width=\linewidth}/$ endif $/
+/$ if large_block $/\clearpage/$ endif $/
+
+\end{document}

@@ -1,0 +1,65 @@
+#!/usr/bin/python
+
+#from one level up 
+# pkgbuild --nopayload --identifier advmaker --scripts scripts advmaker_sublime.pkg
+import os
+import stat
+
+build = """{
+    "cmd": ["advmaker.sh"],
+    "path": "/bin:/usr/bin:/usr/local/bin:$HOME/Library/Application Support/Sublime Text 3/Packages/AdventureMaker",   
+    "windows" : {
+    	"cmd" : ["advmaker.bat"],
+    	"path" : "C:%HOMEPATH%\\\\AppData\\\\Roaming\\\\Sublime Text 3\\\\Packages\\\\AdventureMaker"
+    }
+}
+"""
+
+script = """#!/bin/bash
+zip AMinput.zip -r adventure.adv config.ini *.json fg/ pdf/ >/dev/null
+curl --silent --output AMoutput.zip --data-binary "@AMinput.zip" http://app.dndal.club/advmaker/make
+if [ $? -ne 0 ]
+then
+        echo "Something went really wrong. Your document is probably broken in a way the error checking failed to catch."
+        exit
+fi
+
+rm AMinput.zip
+rm -rf finished/
+unzip AMoutput.zip -d finished >/dev/null 
+if [ $? -ne 0 ] 
+then
+        echo "Error unpacking the results. Something probably went wrong on the server." 
+        echo "This might explain it:" 
+        cat AMoutput.zip 
+fi
+rm AMoutput.zip
+cat finished/logfile.txt
+if [ -e "finished/adventure.pdf" ]; then
+        open finished/adventure.pdf
+fi
+"""
+uroot = os.environ['HOME'] + '/Library/Application Support/Sublime Text 3/Packages/'
+baseperm =  stat.S_IRUSR | stat.S_IWUSR | stat.S_IRGRP | stat.S_IWGRP | stat.S_IROTH | stat.S_IWOTH 
+
+try:
+	os.makedirs(uroot + 'AdventureMaker')
+except:
+	tmp = None
+
+try:
+	os.makedirs(uroot + 'User')
+except:
+	tmp = None
+
+with open(uroot + 'User/AdvMaker.sublime-build','w') as fout:
+	fout.write(build)
+
+os.chmod(uroot + 'User/AdvMaker.sublime-build', baseperm )
+	
+with open(uroot + 'AdventureMaker/advmaker.sh','w') as fout:
+	fout.write(script)
+
+os.chmod(uroot + 'AdventureMaker/advmaker.sh', baseperm | stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH)
+
+print('AdventureMaker has been installed.')

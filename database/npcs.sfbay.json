@@ -1,0 +1,51 @@
+{
+	"No Such Person" : {
+		"name" : "No Such Person",
+		"title" : "MIA",
+		"race" : "Unknown",
+		"gender" : "That's Personal",
+		"description" : "You have reference an NPC that does not exist in the database. Check the log file to see if there was a problem reading your NPC file, and then double check the list of known NPCs. Spelling counts."
+	},
+	"Loretta Truss" : {
+		"name" : "Loretta Truss",
+		"title" : "Lighthouse Keeper",
+		"race" : "Human",
+		"gender" : "female",
+		"description" : "Loretta is thin, with fine features and flowing blond hair. She appears to be in her late thirties, but is actually nearly fifty. She claims elvish ancestry three generations back (making her 1/8th elven). Loretta is sullen, joyless, and hard working. She is the lighthouse keeper of Hofstead's Beacon, and the proprietor of its inn and tavern."
+	},
+	"Bori Irontongs" : {
+		"name" : "Bori Irontongs",
+		"title" : "Cook",
+		"race" : "Dwarf",
+		"gender" : "male",
+		"description" : "Bori is a stocky, middle-aged dwarf, with red hair and beard, and a dry wit. He is the cook at Hofstead's beacon, where he has become an especially fine cook of seafood; a speciality lost on other dwarves."
+	},
+	"Gibbar Jusan" : {
+		"name" : "Gibbar Jusan",
+		"title" : "Zhentarim Agent",
+		"race" : "Human",
+		"gender" : "male",
+		"description" : "Gibbar Jusan is a lanky young man with too much grease in his jet black hair. He is obviously trying to grow a goatee. A member of the Zhentarim and a passable sailor, he is frequently employed aboard merchant vessels where his entrepreneurial spirit finds opportunities for personal profit."
+	},
+	"Ruth Tolfest" : {
+		"name" : "Ruth Tolfest",
+		"title" : "Unlucky Survivor",
+		"race" : "Halfling",
+		"gender" : "female",
+		"description" : "Ruth Tolfest is a young halfling, with brown eyes, black hair, and a sparkling disposition. Always cheerful and optimistic, she has set out to see the world. Ruth has roamed the Sea of Fallen Stars and the Moonsea region extensively, constantly being involved in disasters. She always seems to come out unscathed."
+	},
+	"Corbin Tusslefoot" : {
+		"name" : "Corbin Tusslefoot",
+		"title" : "Linguist and Scholar",
+		"race" : "Halfling",
+		"gender" : "male",
+		"description" : "Corbin Tusslefoot is a spry but aging halfing. Gray is beginning to show at his temples, and wrinkles are appearing around his bespectacled eyes. Corbin is well traveled and widely read, and makes his living as a tutor in other languages. He speaks Dwarvish, Elven, Giant, and Draconic."
+	},
+	"Druman Lakeman" : {
+		"name" : "Druman Lakeman",
+		"title" : "Sailor and Boatswain",
+		"race" : "Human",
+		"gender": "male",
+		"description" : "Druman Lakeman is a burly man in his late thirties. After a chilhood apprenticed to an abusive carpenter, we ran away to sea. He has made a career of sailing the Moonsea and the Dragon Reach. His skills as a carpenter have allowed him to become a boatswain; the officer in charge of repairs to the ship."
+	}
+}

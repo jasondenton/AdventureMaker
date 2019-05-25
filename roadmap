@@ -1,0 +1,26 @@
+Roadmap, pseudo design document for code is at src/roadmap.
+
+advmaker_templates
+	Jinja2 templates used by AdventureMaker. Must be available to the server. This is where the rendering
+	engine looks for its inputes.
+
+assets
+	Additional assets need to produce finished files. Includes latex style files nad D&D logos. Copied to working production scratch directories by the advzip.py level process.
+
+client
+	Repository for client side submission scripts and plumbing.
+
+database
+	Collection of JSON files representing the AdventureMaker "database". Data only.
+
+httpd_conf
+	Apache configuration and notes for deployment to production
+
+QuickStart
+	The quick start and tutorial project directory.
+
+site
+	Copy of the AdventureMaker website. 
+
+src
+	Python source for AdventureMaker.

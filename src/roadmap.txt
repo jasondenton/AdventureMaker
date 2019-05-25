@@ -1,0 +1,117 @@
+advdoc.py
+	Main parser file. This code slurps the input text, parses it, and spits out a dictionary that describes
+	the adventure text. This is where all (most) interaction with the database happens; in theory the resulting
+	dictionary should be a self contained description of everything needed to produce all versions of the adventure.
+	Output dictionary attempts to resolve as much information as possible to ease the work of the backends, but some
+	things like text formatting must still be done on a per backend basis.
+
+	Major construct in this file is the Document, with various subclasses. Documents understand processing and
+	behavior of their corresponding elements, and eventually response to a call to return their content with
+	a dictionary representing the state of their element. The collection of dictionaries is arranged and returned
+	as the output.
+
+	Basic processing model is that incoming text passes through an instance of PatternBehavior, which builds
+	the internal model. Then, textual elements pass through a second instance of PatternBheavior which catches
+	replacement codes in the text and augments the model being build with the necessary global data but
+	otherwise leaves the text in tact.
+
+advmaker.wsgi
+	Web glue that connects the application to the webserver.
+
+advmaker_local.sh
+	Script for submitting an adventure to a locally running instance. Use for debugging.
+
+advtemplate.py
+	Interfaces with Jinja2 templating language. Simple front end that manages templates in different dialects
+	and provides custom handlers/converters/filters for Jinja.
+
+advutils.py
+	Simple utitlity routines for use in multiple other places. For example, gold/silver currency formatter.
+
+advzip.py
+	Highest layer that does not know about Flask/Django/Web toolkit/Webserver. Takes input from the user in the
+	form of a zipped project file, returns a zip file of the results. Coordinates the parsing of the input, dispatching
+	to output engines like LaTeX and FG, and invokes external processes like LaTeX and ghostscript as required. This
+	is the real "frontend" code; if you wanted to turn AdvMaker (back) into a command line tool, or drop some other
+	GUI on it, this is what you would replace.
+
+application.py
+	Flask application file. REST interface. Invoked by advmaker.wsgi. Does URL routing and JSON encoding for return
+	results.
+
+bibliography.py
+	Manages the bibliographic database.
+
+fantasygrounds.py
+	The FantasyGrounds output engine. Takes the dictionary output from advdoc.py and produces a Fantasy Grounds .mod file.
+	FantasyGrounds format is oriented around a series of XML records connect by various types of links the refer to other
+	records based on their ID. This backend creates "pages" representing major sections (chapters, encounters, etc) of the 
+	adventure, and formats those to fg records. Does some basic HTML like escaping and text conversiojn. Record IDs may be
+	forward referencing, which makes FG mod production something of a mess. Writes the db.xml and description.xml files,
+	leaves zipping of contents to the advzip.py level Adding features to the PDF is easy; adding features to FG is hard. 
+	Always retain feature parity.
+
+latexengine.py
+	LaTeX backend. Produces the LaTeX files that eventually get turned into PDFs. Does LaTeX escaping of the text, then prepares
+	the incoming dictionrary to be applies to the Ninja2 templates. Writes the latex files to the working output directory, leaves
+	actual invocation of LaTeX to higher levels (advzip.py).
+
+logger.py
+	Represents the master system log where errors get written and eventually returned to the user. Not re-entrant, this class
+	is global state. Must be rewritten to make AM invocable as a web app rather than just a plain cgi run once program.
+
+magicitems.py
+	Manages the magic item database, returning magic item records to high levels (advdoc.py). Note that magic items, more
+	so than other database items, have significant per-adventure state such as flavor text, copies available, ect. They may
+	reference spells and stat blocks. Consequently, lots of higher level processing of magic items actually lives in advdoc.py.
+
+monsters.py
+	Manages the monster database. Does de-normalization of monster records, filling in such things as skill and save numbers, 
+	max hit points, xp values, and so on.
+
+npc.py
+	Manages the NPC database.
+
+patterns.py
+	Defines two classes critical to the parsing and procedssing of the input. PatternBehavior takes a dictionary of 
+	regex rules mapped to functions. It matches its input against this dictionary and invokes the functions as needed.
+	Incoming text is left unchanged. PatternSubstitutions is similar, expect that it replaces a matched expression with
+	the output of the function.
+
+	PatternBehavior is used by advdoc.py to build the internal model of the adventure, PatternSubstition is used
+	by the back ends to do escaping and other manipulations of the text on a per output platform basis.
+
+runlocal.sh
+	Create a locally running instance of advmaker. Requires Flask and Jinja packageas to be installed. Note that
+	this instance will handle as many requests as sent to it without restarting, but at present only the first run
+	is correct, as the code is not re-entrant. As the very least you will see log messages accumlate between runs.
+	Use for debugging, not production.
+
+sidebar.py
+	Manages the sidebar database.
+
+simpleconfig.py
+	Sugar on top of python config.ini classes.
+
+spells.py
+	Manages the spell database.
+
+AdvMaker evolved from a once and done command line tool. Python does not provide a good way to do singletons, so AM instead used
+package level variables to manage the state of global level objects. This is fine for once and done processing, but does not work
+in a web frameworks were a single process handles multiple requests. Production AM deals with this by instructing Apache to reset
+the process after each run. This is not efficent, both in terms of system calls and python parsing, but also because it forces the
+ever growing DB files to be reread and re-parsed for every invocation.
+
+To fix this, the database objects needs to be moved to a NoSQL store of some sort, and the database management classes need
+to implement per-request state requests that represent the requests view of the DB. That is, they need to fetch and retain
+requested objects, and then patch that view with data coming in from the project bundle via json files. The logger also needs
+to per turned into a per-request object. All of this will require plumbing signficant state into the existing infrastructure.
+
+
+
+
+
+
+
+
+

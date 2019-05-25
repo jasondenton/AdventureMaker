@@ -1,0 +1,79 @@
+<id-{{'%05d' % mid}}>
+        <abilities>
+                <charisma>
+                        <bonus type="number">{{modifier.charisma}}</bonus>
+                        <score type="number">{{charisma}}</score>
+                </charisma>
+                <constitution>
+                        <bonus type="number">{{modifier.constitution}}</bonus>
+                        <score type="number">{{constitution}}</score>
+                </constitution>
+                <dexterity>
+                        <bonus type="number">{{modifier.dexterity}}</bonus>
+                        <score type="number">{{dexterity}}</score>
+                </dexterity>
+                <intelligence>
+                        <bonus type="number">{{modifier.intelligence}}</bonus>
+                        <score type="number">{{intelligence}}</score>
+                </intelligence>
+                <strength>
+                        <bonus type="number">{{modifier.strength}}</bonus>
+                        <score type="number">{{strength}}</score>
+                </strength>
+                <wisdom>
+                        <bonus type="number">{{modifier.wisdom}}</bonus>
+                        <score type="number">{{wisdom}}</score>
+                </wisdom>
+        </abilities>
+        <ac type="number">{{armor_class}}</ac>
+        <actext type="string">{{armor_type}}</actext>
+        <actions>
+        {% for act in actions %}
+                <id-{{'%05d' % loop.index}}>
+                     <desc type="string">{{act.desc}}</desc>  
+                     <name type="string">{{act.name}}</name> 
+                </id-{{'%05d' % loop.index}}>
+        {% endfor %}
+        </actions>
+        <alignment type="string">{{alignment}}</alignment>
+        <cr type="string">{{challenge_rating}}</cr>
+        <hd type="string">{{hit_dice_num}}d{{hit_dice_size}}{{hit_dice_bonus}}</hd>
+        <hp type="number">{{hit_points}}</hp>
+        <innatespells/>
+        <languages type="string">{{languages}}</languages>
+        <legendaryactions>
+        {% for act in legendary_actions %}
+                <id-{{'%05d' % loop.index}}>
+                     <desc type="string">{{act.desc}}</desc>  
+                     <name type="string">{{act.name}}</name> 
+                </id-{{'%05d' % loop.index}}>
+        {% endfor %}
+        </legendaryactions>
+        <locked type="number">1</locked>
+        <name type="string">{% if alias %}{{name}} ({{alias}}){%else%}{{name}}{%endif%}</name>
+        <reactions>
+        {% for act in reactions %}
+                <id-{{'%05d' % loop.index}}>
+                     <desc type="string">{{act.desc}}</desc>  
+                     <name type="string">{{act.name}}</name> 
+                </id-{{'%05d' % loop.index}}>
+        {% endfor %}            
+        </reactions>
+        <savingthrows type="string">{{saves}}</savingthrows>
+        <senses type="string">{{passive_perception}}</senses>
+        <size type="string">{{size}}</size>
+        <speed type="string">{{speed}}</speed>
+        <spells/>
+        <text type="formattedtext"/>
+        <token type="token">tokens/{{token}}.png@DD5E SRD Bestiary</token>
+        <traits>
+        {% for act in traits %}
+                <id-{{'%05d' % loop.index}}>
+                     <desc type="string">{{act.desc}}</desc>  
+                     <name type="string">{{act.name}}</name> 
+                </id-{{'%05d' % loop.index}}>
+        {% endfor %} 
+        </traits>
+        <type type="string">{{type}} {%if subtype %}({{subtype}}){% endif %}</type>
+        <xp type="number">{{xp}}</xp>
+</id-{{'%05d' % mid}}>

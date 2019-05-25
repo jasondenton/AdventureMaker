@@ -1,0 +1,24 @@
+{
+	"No Such Person" : {
+		"name" : "No Such Person",
+		"title" : "MIA",
+		"race" : "Unknown",
+		"gender" : "That's Personal",
+		"description" : "You have reference an NPC that does not exist in the database. Check the log file to see if there was a problem reading your NPC file, and then double check the list of known NPCs. Spelling counts."
+	},
+	"Garwyl Gos" : {
+		"name" : "Garwyl Gos",
+		"title" : "Zor of Mulmaster",
+		"race" : "Human",
+		"gender" : "male",
+		"description" : "Description goes here"
+	},
+	"Tiega Gos" : {
+		"name" : "Tiega Gos",
+		"title" : "Zor of Mulmaster",
+		"race" : "Human",
+		"gender" : "female",
+		"description" : "Description goes here"
+
+	}
+}
