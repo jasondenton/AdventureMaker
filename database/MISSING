@@ -1,0 +1,8 @@
+Normally this direction would contains files like :
+
+monsterdb.mm.json
+items.dmg.json
+
+But, because the contents of such files would impinge the copyrights of Hasbro, 
+those files are not distributed with this software. Instead, see the similar
+files in the example adventure for how to populate these files.

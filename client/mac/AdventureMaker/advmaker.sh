@@ -1,6 +1,6 @@
 #!/bin/bash
 zip AMinput.zip -r adventure.adv config.ini *.json fg/ pdf/ >/dev/null
-curl --silent --output AMoutput.zip --data-binary "@AMinput.zip" http://app.dndal.club/advmaker/make
+curl --silent --output AMoutput.zip --data-binary "@AMinput.zip" http://app.greatpanic.com/advmaker/make
 if [ $? -ne 0 ]
 then
         echo "Something went really wrong. Your document is probably broken in a way the error checking failed to catch."
